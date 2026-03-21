@@ -4,812 +4,769 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>tecHMaster — Web & Social Media Agency</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
 <style>
-:root{
-  --primary:#1a56db;
-  --primary-light:#eff6ff;
-  --primary-mid:#bfdbfe;
-  --accent:#0ea5e9;
-  --dark:#0f172a;
-  --body:#334155;
-  --muted:#64748b;
-  --border:#e2e8f0;
-  --bg:#f8fafc;
-  --white:#ffffff;
-  --radius:14px;
-  --shadow:0 1px 3px rgba(15,23,42,.06),0 4px 16px rgba(15,23,42,.07);
-  --shadow-lg:0 8px 32px rgba(15,23,42,.1),0 2px 8px rgba(15,23,42,.06);
+:root {
+  --blue: #1a56db;
+  --blue-light: #eff6ff;
+  --blue-mid: #bfdbfe;
+  --dark: #0f172a;
+  --body: #334155;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --bg: #f8fafc;
+  --white: #ffffff;
+  --radius: 16px;
+  --shadow: 0 1px 3px rgba(15,23,42,.05), 0 4px 16px rgba(15,23,42,.06);
+  --shadow-md: 0 4px 24px rgba(15,23,42,.08), 0 1px 4px rgba(15,23,42,.04);
+  --shadow-lg: 0 12px 40px rgba(15,23,42,.10), 0 2px 8px rgba(15,23,42,.05);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--body);font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
-h1,h2,h3,.serif{font-family:'Fraunces',serif}
-a{text-decoration:none}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--body); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1,h2,h3 { font-family: 'DM Serif Display', serif; }
+a { text-decoration: none; }
 
-/* ─── NAVBAR ─── */
-.navbar{background:rgba(255,255,255,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.85rem 0;position:sticky;top:0;z-index:1000}
-.brand-logo{height:40px;width:auto;object-fit:contain}
-.nav-link{color:var(--body)!important;font-weight:500;font-size:.9rem;padding:.3rem .75rem!important;border-radius:6px;transition:.15s}
-.nav-link:hover{color:var(--primary)!important;background:var(--primary-light)}
-.nav-link.active{color:var(--primary)!important}
-.btn-nav{background:var(--primary);color:#fff!important;border-radius:8px;padding:.42rem 1.2rem!important;font-weight:600;font-size:.88rem;transition:.2s}
-.btn-nav:hover{background:#1749c0;color:#fff!important}
+/* ── SCROLL ANIMATIONS ── */
+.fade-up   { opacity:0; transform:translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+.fade-left { opacity:0; transform:translateX(-30px); transition: opacity .6s ease, transform .6s ease; }
+.fade-right{ opacity:0; transform:translateX(30px);  transition: opacity .6s ease, transform .6s ease; }
+.fade-up.vis, .fade-left.vis, .fade-right.vis { opacity:1; transform:none; }
+.d1{transition-delay:.08s}.d2{transition-delay:.17s}.d3{transition-delay:.26s}
+.d4{transition-delay:.35s}.d5{transition-delay:.44s}
 
-/* ─── HERO ─── */
-.hero{padding:90px 0 80px;background:var(--white);overflow:hidden;position:relative}
-.hero::before{content:'';position:absolute;top:-200px;right:-150px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(26,86,219,.06) 0%,transparent 65%);pointer-events:none;z-index:0}
-.hero .container{position:relative;z-index:1}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:var(--primary-light);border:1px solid var(--primary-mid);border-radius:50px;padding:.3rem 1rem;font-size:.8rem;font-weight:600;color:var(--primary);letter-spacing:.04em;margin-bottom:1.4rem}
-.hero h1{font-size:clamp(2.5rem,5vw,4rem);line-height:1.07;color:var(--dark);margin-bottom:1.3rem;font-weight:900}
-.hero h1 em{font-style:italic;color:var(--primary)}
-.hero-sub{font-size:1.05rem;color:var(--muted);max-width:480px;line-height:1.75;margin-bottom:2rem}
-.btn-prim{background:var(--primary);color:#fff;border-radius:10px;padding:.65rem 1.6rem;font-weight:600;font-size:.92rem;border:none;transition:.2s;display:inline-flex;align-items:center;gap:.5rem;cursor:pointer}
-.btn-prim:hover{background:#1749c0;color:#fff;transform:translateY(-1px);box-shadow:0 6px 20px rgba(26,86,219,.28)}
-.btn-sec{background:var(--white);color:var(--dark);border:1.5px solid var(--border);border-radius:10px;padding:.62rem 1.5rem;font-weight:600;font-size:.92rem;transition:.2s;display:inline-flex;align-items:center;gap:.5rem}
-.btn-sec:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
-.trust-row{margin-top:2.2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.trust-avs{display:flex}
-.trust-avs span{width:32px;height:32px;border-radius:50%;border:2.5px solid #fff;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#fff;margin-left:-8px}
-.trust-avs span:first-child{margin-left:0}
-.av1{background:linear-gradient(135deg,#1a56db,#0ea5e9)}
-.av2{background:linear-gradient(135deg,#7c3aed,#e879f9)}
-.av3{background:linear-gradient(135deg,#059669,#34d399)}
-.av4{background:linear-gradient(135deg,#dc2626,#f97316)}
-.trust-txt{font-size:.82rem;color:var(--muted)}
-.trust-txt strong{color:var(--dark);font-weight:600}
-
-/* Floating hero cards */
-.hero-art{position:relative}
-.hcf{position:absolute;background:#fff;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow-lg);padding:.85rem 1rem;font-size:.78rem;white-space:nowrap;z-index:10}
-.hcf .val{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:800;color:var(--dark);line-height:1.2}
-.hcf-1{top:10%;left:-24px;animation:floatAnim 3.5s ease-in-out infinite}
-.hcf-2{bottom:14%;right:-16px;animation:floatAnim 4s ease-in-out infinite .9s}
-@keyframes floatAnim{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-
-/* ─── CLIENTS STRIP ─── */
-.strip{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.6rem 0}
-.strip-label{font-size:.76rem;font-weight:700;color:var(--muted);letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
-.cli-item{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:#94a3b8;letter-spacing:.02em}
-
-/* ─── SECTIONS ─── */
-.sec-ey{font-size:.75rem;font-weight:700;letter-spacing:.1em;color:var(--primary);text-transform:uppercase;margin-bottom:.7rem}
-.sec-title{font-size:clamp(1.9rem,3.5vw,2.8rem);color:var(--dark);font-weight:900;line-height:1.1;margin-bottom:.9rem}
-.sec-body{color:var(--muted);font-size:1rem;max-width:520px;line-height:1.75}
-
-/* ─── SERVICES ─── */
-#services{padding:100px 0}
-.svc-card{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:2rem;transition:.25s;height:100%;position:relative;overflow:hidden}
-.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--primary);opacity:0;transition:.25s;border-radius:20px 20px 0 0}
-.svc-card:hover{border-color:var(--primary-mid);box-shadow:var(--shadow-lg);transform:translateY(-5px)}
-.svc-card:hover::before{opacity:1}
-.svc-ic{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.3rem}
-.ic-blue{background:#eff6ff;color:var(--primary)}
-.ic-green{background:#f0fdf4;color:#16a34a}
-.ic-purple{background:#fdf4ff;color:#a21caf}
-.svc-card h5{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.05rem;color:var(--dark);margin-bottom:.6rem}
-.svc-card p{color:var(--muted);font-size:.9rem;line-height:1.7;margin:0}
-.svc-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.1rem}
-.stag{font-size:.72rem;font-weight:600;padding:.22rem .65rem;border-radius:50px;background:var(--bg);color:var(--muted);border:1px solid var(--border)}
-
-/* ─── PROCESS ─── */
-#process{padding:100px 0;background:var(--bg)}
-.proc-step{position:relative;padding-left:3.4rem;padding-bottom:2rem}
-.proc-n{position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;z-index:1}
-.proc-step::after{content:'';position:absolute;left:18px;top:36px;width:1.5px;height:calc(100% - 6px);background:var(--border)}
-.proc-step:last-child::after{display:none}
-.proc-step h6{font-weight:700;color:var(--dark);margin-bottom:.3rem;font-size:.97rem}
-.proc-step p{color:var(--muted);font-size:.88rem;line-height:1.65;margin:0}
-
-/* ─── PLANS ─── */
-#plans{padding:100px 0}
-.plan-card{border-radius:22px;padding:2.2rem;border:1.5px solid var(--border);transition:.25s;height:100%;position:relative;background:var(--white)}
-.plan-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
-.plan-card.featured{border-color:var(--primary);box-shadow:0 0 0 4px rgba(26,86,219,.08)}
-.feat-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;font-size:.72rem;font-weight:700;padding:.28rem 1.1rem;border-radius:50px;white-space:nowrap;letter-spacing:.04em}
-.plan-tier{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
-.t-silver{color:#64748b}
-.t-gold{color:#d97706}
-.t-prem{color:#7c3aed}
-.plan-price{font-family:'Fraunces',serif;font-size:2.9rem;font-weight:900;color:var(--dark);line-height:1;margin:.4rem 0}
-.plan-price sub{font-size:1rem;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;vertical-align:bottom;bottom:.25em}
-.plan-price sup{font-size:1.1rem;color:var(--muted);font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;vertical-align:top;top:.25em}
-.plan-desc{color:var(--muted);font-size:.87rem;margin-bottom:1.3rem;line-height:1.6;border-bottom:1px solid var(--border);padding-bottom:1.2rem}
-.plan-features{list-style:none;padding:0;margin:0 0 1.6rem}
-.plan-features li{display:flex;align-items:center;gap:.6rem;padding:.38rem 0;font-size:.9rem;color:var(--body)}
-.plan-features li i.bi-check-circle-fill{color:#16a34a;font-size:.88rem;flex-shrink:0}
-.plan-features li.off{color:var(--muted);opacity:.45}
-.plan-features li.off i{color:var(--muted)}
-.btn-pplan{background:var(--primary);color:#fff;border-radius:10px;padding:.65rem 1.4rem;font-weight:600;font-size:.9rem;border:none;width:100%;transition:.2s;cursor:pointer}
-.btn-pplan:hover{background:#1749c0;color:#fff;box-shadow:0 4px 16px rgba(26,86,219,.28)}
-.btn-pplan-out{background:transparent;color:var(--primary);border:1.5px solid var(--primary-mid);border-radius:10px;padding:.62rem 1.4rem;font-weight:600;font-size:.9rem;width:100%;transition:.2s;cursor:pointer}
-.btn-pplan-out:hover{background:var(--primary-light)}
-
-/* ─── STATS ─── */
-.stats-band{padding:75px 0;background:var(--primary)}
-.stat-num{font-family:'Fraunces',serif;font-size:2.9rem;font-weight:900;color:#fff;line-height:1}
-.stat-lbl{font-size:.84rem;color:rgba(255,255,255,.7);margin-top:.35rem}
-
-/* ─── WHY ─── */
-#why{padding:100px 0}
-.why-item{display:flex;gap:1rem;padding:1.2rem;border-radius:var(--radius);transition:.2s}
-.why-item:hover{background:var(--bg)}
-.why-ic{width:44px;height:44px;border-radius:10px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0}
-.why-item h6{font-weight:700;color:var(--dark);margin-bottom:.3rem;font-size:.95rem}
-.why-item p{color:var(--muted);font-size:.86rem;line-height:1.6;margin:0}
-
-/* ─── TEAM ─── */
-#team{padding:100px 0;background:var(--bg);border-top:1px solid var(--border)}
-.team-card{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:2rem;text-align:center;transition:.25s;height:100%}
-.team-card:hover{border-color:var(--primary-mid);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
-.t-avatar{width:88px;height:88px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1.8rem;font-weight:900;color:#fff;position:relative}
-.ta1{background:linear-gradient(135deg,#1a56db,#0ea5e9)}
-.ta2{background:linear-gradient(135deg,#7c3aed,#e879f9)}
-.ta3{background:linear-gradient(135deg,#d97706,#fbbf24)}
-.t-badge{position:absolute;bottom:-4px;right:-4px;background:#fff;border:1.5px solid var(--border);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.78rem}
-.team-card h5{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;color:var(--dark);margin-bottom:.2rem}
-.team-role{font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--primary);margin-bottom:.7rem}
-.team-card p{color:var(--muted);font-size:.85rem;line-height:1.65;margin:0}
-.t-soc{display:flex;justify-content:center;gap:.5rem;margin-top:1rem}
-.t-soc a{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem;transition:.2s}
-.t-soc a:hover{background:var(--primary);border-color:var(--primary);color:#fff}
-
-/* ─── CONTACT ─── */
-#contact{padding:100px 0;background:var(--bg)}
-.cform{background:var(--white);border:1.5px solid var(--border);border-radius:24px;padding:2.5rem;box-shadow:var(--shadow)}
-.cform label{font-size:.85rem;font-weight:600;color:var(--dark);margin-bottom:.4rem;display:block}
-.cform input,.cform textarea,.cform select{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:.7rem 1rem;font-size:.9rem;font-family:'Plus Jakarta Sans',sans-serif;color:var(--dark);background:#fff;outline:none;transition:.2s;margin-bottom:1.1rem}
-.cform input:focus,.cform textarea:focus,.cform select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(26,86,219,.1)}
-.cform textarea{resize:vertical;min-height:110px}
-.cinfo-item{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.2rem;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--white);transition:.2s;margin-bottom:1rem}
-.cinfo-item:hover{border-color:var(--primary-mid);background:var(--primary-light)}
-.ci-ic{width:46px;height:46px;border-radius:10px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0}
-.ci-ic.g{background:#f0fdf4;color:#16a34a}
-.ci-ic.y{background:#fffbeb;color:#d97706}
-.ci-ic.a{background:#fff7ed;color:#c2410c}
-.cinfo-item h6{font-weight:700;color:var(--dark);font-size:.88rem;margin-bottom:.1rem}
-.cinfo-item a,.cinfo-item p{font-size:.84rem;color:var(--muted);margin:0}
-.cinfo-item a:hover{color:var(--primary)}
-
-/* ─── FOOTER ─── */
-footer{background:var(--dark);color:rgba(255,255,255,.65);padding:60px 0 28px}
-.ft-brand{font-family:'Fraunces',serif;font-size:1.45rem;font-weight:900;color:#fff;margin-left:.5rem}
-footer h6{color:#fff;font-weight:700;font-size:.9rem;margin-bottom:1rem;letter-spacing:.03em}
-.ft-link{display:block;color:rgba(255,255,255,.5);font-size:.88rem;padding:.22rem 0;transition:.15s}
-.ft-link:hover{color:#fff}
-.ft-soc{width:36px;height:36px;border-radius:8px;border:1px solid rgba(255,255,255,.12);display:inline-flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.9rem;transition:.2s}
-.ft-soc:hover{background:var(--primary);border-color:var(--primary);color:#fff}
-.ft-hr{border-color:rgba(255,255,255,.08);margin:2rem 0}
-.ft-bot{font-size:.81rem;color:rgba(255,255,255,.3)}
-
-/* ─── ANIMATIONS ─── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
-.au{opacity:0;animation:fadeUp .65s ease forwards}
-.d1{animation-delay:.1s}.d2{animation-delay:.22s}.d3{animation-delay:.34s}.d4{animation-delay:.46s}.d5{animation-delay:.58s}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
-.reveal.in{opacity:1;transform:none}
-
-/* ─── MISC ─── */
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:#f1f5f9}
-::-webkit-scrollbar-thumb{background:var(--primary);border-radius:10px}
-@media(max-width:768px){
-  .hero{padding:70px 0 60px}
-  .hcf{display:none}
-  section,.stats-band{padding:70px 0}
-  #team{padding:70px 0}
-  #contact{padding:70px 0}
+/* ── NAVBAR ── */
+nav {
+  position: sticky; top:0; z-index: 1000;
+  background: rgba(255,255,255,.96); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border); padding: .9rem 0; transition: box-shadow .3s;
 }
+nav.up { box-shadow: var(--shadow); }
+.nw { max-width:1240px; margin:auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+.logo { font-family:'DM Serif Display',serif; font-size:1.45rem; color:var(--dark); }
+.logo em { font-style:italic; color:var(--blue); }
+.nl { display:flex; gap:.15rem; list-style:none; }
+.nl a { color:var(--muted); font-size:.88rem; font-weight:500; padding:.35rem .8rem; border-radius:8px; transition:.18s; }
+.nl a:hover { color:var(--dark); background:var(--bg); }
+.btn-nav { background:var(--blue); color:#fff; padding:.5rem 1.3rem; border-radius:10px; font-weight:600; font-size:.87rem; border:none; cursor:pointer; transition:.2s; white-space:nowrap; }
+.btn-nav:hover { background:#1749c0; transform:translateY(-1px); box-shadow:0 4px 16px rgba(26,86,219,.3); }
+.hbg { display:none; background:none; border:none; font-size:1.4rem; color:var(--dark); cursor:pointer; }
+
+/* ── HERO ── */
+.hero { padding:100px 0 80px; position:relative; overflow:hidden; }
+.hero::after { content:''; position:absolute; top:-200px; right:-300px; width:700px; height:700px; border-radius:50%; background:radial-gradient(circle,rgba(26,86,219,.05),transparent 65%); pointer-events:none; }
+.hw { max-width:1240px; margin:auto; padding:0 2rem; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.badge { display:inline-flex; align-items:center; gap:.5rem; background:var(--blue-light); border:1px solid var(--blue-mid); border-radius:50px; padding:.28rem .9rem; font-size:.76rem; font-weight:600; color:var(--blue); letter-spacing:.04em; text-transform:uppercase; margin-bottom:1.3rem; }
+.badge span { width:6px; height:6px; border-radius:50%; background:var(--blue); }
+h1.ht { font-size:clamp(2.8rem,4.5vw,4rem); line-height:1.08; color:var(--dark); margin-bottom:1.2rem; }
+h1.ht em { font-style:italic; color:var(--blue); }
+.hsub { font-size:1rem; color:var(--muted); max-width:440px; line-height:1.75; margin-bottom:2rem; }
+.hbtns { display:flex; gap:.8rem; flex-wrap:wrap; }
+.btn-p { background:var(--blue); color:#fff; padding:.65rem 1.6rem; border-radius:10px; font-weight:600; font-size:.92rem; border:none; cursor:pointer; transition:.2s; display:inline-flex; align-items:center; gap:.5rem; }
+.btn-p:hover { background:#1749c0; transform:translateY(-1px); box-shadow:0 6px 20px rgba(26,86,219,.28); color:#fff; }
+.btn-o { background:var(--white); color:var(--dark); border:1.5px solid var(--border); padding:.62rem 1.5rem; border-radius:10px; font-weight:600; font-size:.9rem; transition:.2s; display:inline-flex; align-items:center; gap:.5rem; }
+.btn-o:hover { border-color:var(--blue); color:var(--blue); background:var(--blue-light); }
+.hero-img { position:relative; }
+.hero-img img { width:100%; border-radius:20px; box-shadow:var(--shadow-lg); display:block; }
+.hpill { position:absolute; background:var(--white); border:1px solid var(--border); border-radius:14px; padding:.7rem 1rem; box-shadow:var(--shadow-md); display:flex; align-items:center; gap:.7rem; }
+.hpill.p1 { bottom:-18px; left:-18px; }
+.hpill.p2 { top:-14px; right:-14px; }
+.pi { width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+.pi-b{background:var(--blue-light);color:var(--blue);}
+.pi-g{background:#f0fdf4;color:#16a34a;}
+.pn { font-family:'DM Serif Display',serif; font-size:1.2rem; color:var(--dark); line-height:1.1; }
+.pl { font-size:.72rem; color:var(--muted); }
+
+/* ── STRIP ── */
+.strip { border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--bg); padding:1.4rem 0; overflow:hidden; }
+.si { display:flex; gap:3rem; align-items:center; animation:marquee 20s linear infinite; white-space:nowrap; }
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.slbl { font-size:.72rem; font-weight:700; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; flex-shrink:0; padding:0 1rem; }
+.cli { font-family:'DM Serif Display',serif; font-size:1rem; color:#94a3b8; flex-shrink:0; }
+
+/* ── SECTIONS ── */
+.sec { padding:96px 0; }
+.sec.bg { background:var(--bg); }
+.c { max-width:1240px; margin:auto; padding:0 2rem; }
+.sl { font-size:.73rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); display:flex; align-items:center; gap:.5rem; margin-bottom:.7rem; }
+.sl::before { content:''; width:20px; height:2px; background:var(--blue); border-radius:2px; }
+h2.st { font-size:clamp(2rem,3vw,2.7rem); color:var(--dark); line-height:1.1; margin-bottom:.9rem; }
+.sb { color:var(--muted); font-size:.97rem; max-width:500px; line-height:1.75; }
+.gh { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:end; margin-bottom:3.5rem; }
+
+/* ── SERVICES ── */
+.sg { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.sc { background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius); padding:2rem; position:relative; overflow:hidden; transition:.3s; }
+.sc::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--blue); transform:scaleX(0); transform-origin:left; transition:.3s; border-radius:var(--radius) var(--radius) 0 0; }
+.sc:hover { border-color:var(--blue-mid); box-shadow:var(--shadow-lg); transform:translateY(-4px); }
+.sc:hover::before { transform:scaleX(1); }
+.sic { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:1.4rem; }
+.si-b{background:var(--blue-light);color:var(--blue);}
+.si-g{background:#f0fdf4;color:#16a34a;}
+.si-p{background:#fdf4ff;color:#a21caf;}
+.sc h3 { font-family:'DM Sans',sans-serif; font-weight:700; font-size:1.05rem; color:var(--dark); margin-bottom:.55rem; }
+.sc p { color:var(--muted); font-size:.9rem; line-height:1.7; margin:0; }
+.tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:1.1rem; }
+.tag { font-size:.71rem; font-weight:600; padding:.2rem .65rem; border-radius:50px; background:var(--bg); color:var(--muted); border:1px solid var(--border); }
+
+/* ── PROCESS ── */
+.pg { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.steps { display:flex; flex-direction:column; }
+.step { display:flex; gap:1.4rem; padding:1.3rem; border-radius:14px; transition:.2s; position:relative; }
+.step::after { content:''; position:absolute; left:2.55rem; top:calc(100%); width:1.5px; height:16px; background:var(--border); }
+.step:last-child::after { display:none; }
+.step:hover { background:var(--blue-light); }
+.sn { width:36px; height:36px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem; flex-shrink:0; }
+.step h4 { font-weight:700; font-size:.97rem; color:var(--dark); margin-bottom:.3rem; }
+.step p { color:var(--muted); font-size:.88rem; line-height:1.65; margin:0; }
+.proc-img img { width:100%; border-radius:20px; box-shadow:var(--shadow-lg); display:block; }
+
+/* ── PLANS ── */
+.plg { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.plan { border:1.5px solid var(--border); border-radius:22px; padding:2.2rem; background:var(--white); transition:.3s; position:relative; }
+.plan:hover { box-shadow:var(--shadow-lg); transform:translateY(-4px); }
+.plan.feat { border-color:var(--blue); box-shadow:0 0 0 4px rgba(26,86,219,.07); }
+.flbl { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--blue); color:#fff; font-size:.72rem; font-weight:700; padding:.26rem 1rem; border-radius:50px; white-space:nowrap; }
+.pt { font-size:.71rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem; }
+.t-s{color:var(--muted);} .t-g{color:#d97706;} .t-p{color:#7c3aed;}
+.pp { font-family:'DM Serif Display',serif; font-size:3rem; color:var(--dark); line-height:1; margin:.3rem 0; }
+.pp sup { font-size:1.1rem; vertical-align:top; margin-top:.5rem; display:inline-block; font-family:'DM Sans',sans-serif; font-weight:600; color:var(--muted); }
+.pp sub { font-size:.9rem; color:var(--muted); font-family:'DM Sans',sans-serif; font-weight:400; }
+.pd { color:var(--muted); font-size:.86rem; line-height:1.6; border-bottom:1px solid var(--border); padding-bottom:1.2rem; margin-bottom:1.2rem; }
+.pf { list-style:none; padding:0; margin:0 0 1.7rem; }
+.pf li { display:flex; align-items:center; gap:.6rem; padding:.33rem 0; font-size:.89rem; color:var(--body); }
+.pf li .ok { color:#16a34a; font-size:.85rem; }
+.pf li.off { color:var(--muted); opacity:.4; }
+.btn-pl { width:100%; padding:.68rem; border-radius:10px; font-weight:600; font-size:.9rem; cursor:pointer; transition:.2s; border:1.5px solid var(--border); background:transparent; color:var(--dark); }
+.btn-pl:hover { border-color:var(--blue); color:var(--blue); background:var(--blue-light); }
+.btn-pl.fill { background:var(--blue); color:#fff; border-color:var(--blue); }
+.btn-pl.fill:hover { background:#1749c0; box-shadow:0 4px 16px rgba(26,86,219,.3); }
+
+/* ── STATS ── */
+.stats-band { background:var(--blue); padding:64px 0; }
+.stg { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; text-align:center; }
+.stn { font-family:'DM Serif Display',serif; font-size:3rem; color:#fff; line-height:1; }
+.stl { font-size:.83rem; color:rgba(255,255,255,.65); margin-top:.4rem; }
+
+/* ── WHY ── */
+.wg { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.wi { display:flex; flex-direction:column; gap:.5rem; }
+.witem { display:flex; gap:.9rem; padding:1rem 1.1rem; border-radius:14px; transition:.2s; }
+.witem:hover { background:var(--blue-light); }
+.wic { width:42px; height:42px; border-radius:10px; background:var(--blue-light); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+.witem h4 { font-weight:700; font-size:.95rem; color:var(--dark); margin-bottom:.25rem; }
+.witem p { font-size:.86rem; color:var(--muted); line-height:1.6; margin:0; }
+.tcard { background:var(--white); border:1.5px solid var(--border); border-radius:20px; padding:2.2rem; box-shadow:var(--shadow); }
+.qm { font-family:'DM Serif Display',serif; font-size:4rem; color:var(--blue); opacity:.25; line-height:.8; margin-bottom:.5rem; display:block; }
+.qt { font-size:.95rem; color:var(--dark); line-height:1.75; font-style:italic; margin-bottom:1.2rem; }
+.qa { font-size:.8rem; color:var(--muted); font-weight:600; }
+
+/* ── SHOWCASE ── */
+.shg { display:grid; grid-template-columns:2fr 1fr 1fr; gap:1rem; }
+.shi { border-radius:var(--radius); overflow:hidden; position:relative; }
+.shi img { width:100%; height:100%; object-fit:cover; display:block; transition:.45s; }
+.shi:hover img { transform:scale(1.04); }
+.shi.tall { grid-row:span 2; min-height:340px; }
+.shi .cap { position:absolute; inset:0; background:linear-gradient(180deg,transparent 55%,rgba(15,23,42,.6)); display:flex; align-items:flex-end; padding:1.2rem; opacity:0; transition:.3s; }
+.shi:hover .cap { opacity:1; }
+.shi .cap span { font-size:.82rem; font-weight:600; color:#fff; }
+
+/* ── TEAM ── */
+.tg { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.tmcard { background:var(--white); border:1.5px solid var(--border); border-radius:20px; padding:2.2rem 1.8rem; text-align:center; transition:.3s; }
+.tmcard:hover { border-color:var(--blue-mid); box-shadow:var(--shadow-lg); transform:translateY(-4px); }
+
+/* Avatar */
+.av-wrap { position:relative; width:96px; height:96px; margin:0 auto 1.2rem; }
+.av-fb { width:96px; height:96px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'DM Serif Display',serif; font-size:1.9rem; color:#fff; box-shadow:var(--shadow); }
+.av1{background:linear-gradient(135deg,#1a56db,#0ea5e9);}
+.av2{background:linear-gradient(135deg,#7c3aed,#e879f9);}
+.av3{background:linear-gradient(135deg,#d97706,#fbbf24);}
+.av-badge { position:absolute; bottom:0; right:0; background:var(--white); border:2px solid var(--border); border-radius:50%; width:30px; height:30px; display:flex; align-items:center; justify-content:center; font-size:.85rem; }
+.tmcard h3 { font-family:'DM Sans',sans-serif; font-weight:700; font-size:1rem; color:var(--dark); margin-bottom:.15rem; }
+.tr { font-size:.73rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--blue); margin-bottom:.8rem; display:block; }
+.tmcard p { color:var(--muted); font-size:.86rem; line-height:1.65; margin:0; }
+.tsoc { display:flex; justify-content:center; gap:.4rem; margin-top:1.1rem; }
+.tsoc a { width:34px; height:34px; border-radius:8px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:.82rem; transition:.2s; }
+.tsoc a:hover { background:var(--blue); border-color:var(--blue); color:#fff; }
+
+/* ── CONTACT ── */
+.cg { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; align-items:start; }
+.clist { display:flex; flex-direction:column; gap:.8rem; margin-top:1.8rem; }
+.ci { display:flex; align-items:center; gap:.9rem; padding:1rem 1.1rem; border:1.5px solid var(--border); border-radius:14px; background:var(--white); transition:.2s; }
+.ci:hover { border-color:var(--blue-mid); background:var(--blue-light); }
+.ci-i { width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+.c-b{background:var(--blue-light);color:var(--blue);}
+.c-g{background:#f0fdf4;color:#16a34a;}
+.c-y{background:#fffbeb;color:#d97706;}
+.c-o{background:#fff7ed;color:#ea580c;}
+.ci h5 { font-weight:700; font-size:.86rem; color:var(--dark); margin-bottom:.1rem; }
+.ci a,.ci p { font-size:.83rem; color:var(--muted); margin:0; }
+.ci a:hover { color:var(--blue); }
+.otag { display:flex; align-items:center; gap:.6rem; margin-top:1.2rem; padding:.8rem 1.1rem; border-radius:12px; background:#f0fdf4; border:1.5px solid #bbf7d0; }
+.odot { width:7px; height:7px; border-radius:50%; background:#22c55e; flex-shrink:0; }
+.otag p { font-size:.82rem; color:#15803d; font-weight:600; margin:0; }
+.cform { background:var(--white); border:1.5px solid var(--border); border-radius:20px; padding:2.2rem; box-shadow:var(--shadow); }
+.cform h3 { font-family:'DM Sans',sans-serif; font-weight:700; font-size:1.05rem; color:var(--dark); margin-bottom:1.4rem; }
+.fr { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.fg { margin-bottom:1rem; }
+.fg label { display:block; font-size:.82rem; font-weight:600; color:var(--dark); margin-bottom:.4rem; }
+.fg input,.fg select,.fg textarea { width:100%; border:1.5px solid var(--border); border-radius:10px; padding:.68rem .9rem; font-size:.9rem; font-family:'DM Sans',sans-serif; color:var(--dark); background:#fff; outline:none; transition:.2s; }
+.fg input:focus,.fg select:focus,.fg textarea:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(26,86,219,.1); }
+.fg textarea { resize:vertical; min-height:110px; }
+.fg input::placeholder,.fg textarea::placeholder { color:#94a3b8; }
+.btn-sub { width:100%; padding:.75rem; border-radius:10px; background:var(--blue); color:#fff; font-weight:700; font-size:.92rem; border:none; cursor:pointer; transition:.3s; display:flex; align-items:center; justify-content:center; gap:.5rem; }
+.btn-sub:hover { background:#1749c0; box-shadow:0 4px 18px rgba(26,86,219,.3); transform:translateY(-1px); }
+
+/* ── FOOTER ── */
+footer { background:var(--dark); color:rgba(255,255,255,.55); padding:56px 0 24px; }
+.fg2 { display:grid; grid-template-columns:1.8fr 1fr 1fr 1.4fr; gap:3rem; }
+.flogo { font-family:'DM Serif Display',serif; font-size:1.5rem; color:#fff; margin-bottom:.9rem; }
+.flogo em { font-style:italic; color:#60a5fa; }
+.fdesc { font-size:.86rem; line-height:1.7; max-width:280px; }
+.fsoc-row { display:flex; gap:.5rem; margin-top:1.4rem; }
+.fsoc { width:36px; height:36px; border-radius:8px; border:1px solid rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.4); font-size:.85rem; transition:.2s; }
+.fsoc:hover { background:var(--blue); border-color:var(--blue); color:#fff; }
+footer h4 { font-family:'DM Sans',sans-serif; font-weight:700; font-size:.88rem; color:#fff; margin-bottom:1rem; letter-spacing:.03em; }
+.fl { display:block; color:rgba(255,255,255,.4); font-size:.85rem; padding:.22rem 0; transition:.15s; }
+.fl:hover { color:#fff; }
+.fhr { border-color:rgba(255,255,255,.07); margin:2rem 0; }
+.fbot { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:.78rem; color:rgba(255,255,255,.25); }
+
+/* ── BTT ── */
+.btt { position:fixed; bottom:1.5rem; right:1.5rem; width:44px; height:44px; background:var(--blue); color:#fff; border-radius:12px; border:none; display:flex; align-items:center; justify-content:center; font-size:1rem; opacity:0; pointer-events:none; transition:.3s; cursor:pointer; z-index:999; box-shadow:0 4px 16px rgba(26,86,219,.35); }
+.btt.show { opacity:1; pointer-events:auto; }
+.btt:hover { background:#1749c0; transform:translateY(-2px); }
+
+/* ── MOBILE ── */
+.mmenu { display:none; position:fixed; top:65px; left:0; right:0; background:#fff; border-bottom:1px solid var(--border); z-index:999; padding:1rem 2rem; box-shadow:var(--shadow-md); }
+.mmenu.open { display:block; }
+.mmenu a { display:block; padding:.7rem 0; font-size:.95rem; font-weight:500; color:var(--body); border-bottom:1px solid var(--border); }
+.mmenu a:last-child { border:none; }
+@media(max-width:900px){
+  .nl,.tel-lnk{display:none;}
+  .hbg{display:block;}
+  .hw{grid-template-columns:1fr;}
+  .hero{padding:80px 0 60px;}
+  .hero-img{display:none;}
+  .sg,.plg,.tg{grid-template-columns:1fr;}
+  .pg,.wg,.cg{grid-template-columns:1fr;}
+  .shg{grid-template-columns:1fr 1fr;}
+  .shi.tall{grid-row:span 1;}
+  .stg{grid-template-columns:repeat(2,1fr);}
+  .fg2{grid-template-columns:1fr 1fr;}
+  .gh{grid-template-columns:1fr;gap:1rem;}
+  .fr{grid-template-columns:1fr;}
+  .sec{padding:72px 0;}
+}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#f1f5f9;}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:4px;}
 </style>
 </head>
 <body>
 
-<!-- ══ NAVBAR ══ -->
-<nav class="navbar navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="techmaster_logo.jpg" alt="tecHMaster" class="brand-logo"/>
-    </a>
-    <button class="navbar-toggler border-0 p-1" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-      <i class="bi bi-list fs-4" style="color:var(--dark)"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav mx-auto gap-1">
-        <li><a class="nav-link" href="#services">Services</a></li>
-        <li><a class="nav-link" href="#plans">Pricing</a></li>
-        <li><a class="nav-link" href="#process">Process</a></li>
-        <li><a class="nav-link" href="#team">Team</a></li>
-        <li><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-      <div class="d-flex align-items-center gap-3">
-        <a href="tel:+919999999999" class="d-none d-lg-flex align-items-center gap-1" style="font-size:.83rem;font-weight:600;color:var(--muted)">
-          <i class="bi bi-telephone-fill" style="color:var(--primary)"></i> +91 99999 99999
-        </a>
-        <a href="#contact" class="btn btn-nav">Get a Quote</a>
-      </div>
+<!-- NAVBAR -->
+<nav id="nav">
+  <div class="nw">
+    <div class="logo">tec<em>H</em>Master</div>
+    <ul class="nl">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#plans">Pricing</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:1rem">
+      <button class="btn-nav" onclick="location.href='#contact'">Get a Quote</button>
+      <button class="hbg" id="mb"><i class="bi bi-list"></i></button>
     </div>
   </div>
 </nav>
+<div class="mmenu" id="mm">
+  <a href="#services">Services</a><a href="#plans">Pricing</a>
+  <a href="#process">Process</a><a href="#team">Team</a><a href="#contact">Contact</a>
+</div>
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section class="hero" id="home">
-  <div class="container">
-    <div class="row align-items-center gy-5">
-
-      <div class="col-lg-6">
-        <div class="hero-eyebrow au d1">
-          <span style="width:6px;height:6px;border-radius:50%;background:var(--primary);display:inline-block"></span>
-          Digital Growth Agency · Rajkot, India
-        </div>
-        <h1 class="au d2">We Build Digital<br><em>Masterpieces</em><br>That Convert</h1>
-        <p class="hero-sub au d3">From pixel-perfect websites to strategic social media management — tecHMaster crafts digital experiences that build trust, attract clients, and grow your business.</p>
-        <div class="d-flex gap-3 flex-wrap au d4">
-          <a href="#contact" class="btn-prim">Start Your Project <i class="bi bi-arrow-right"></i></a>
-          <a href="#plans" class="btn-sec">View Pricing</a>
-        </div>
-        
+  <div class="hw">
+    <div>
+      <div class="badge fade-up"><span></span> Digital Growth Agency · Rajkot, India</div>
+      <h1 class="ht fade-up d1">We Build Digital<br><em>Masterpieces</em><br>That Convert</h1>
+      <p class="hsub fade-up d2">From pixel-perfect websites to strategic social media management — tecHMaster crafts digital experiences that build trust, attract clients, and grow your business.</p>
+      <div class="hbtns fade-up d3">
+        <a href="#contact" class="btn-p"><i class="bi bi-rocket-takeoff-fill"></i> Start Your Project</a>
+        <a href="#plans" class="btn-o">View Pricing <i class="bi bi-arrow-right"></i></a>
       </div>
-
-      <div class="col-lg-6 hero-art au d3">
-        <!-- Floating stat cards -->
-        <div class="hcf hcf-1">
-          <div style="color:var(--muted);font-size:.69rem;margin-bottom:.2rem">Monthly Reach Growth</div>
-          <div class="val" style="color:var(--primary)">+124%</div>
-          <div style="display:flex;align-items:flex-end;gap:3px;margin-top:.4rem">
-            <span style="height:16px;width:7px;background:var(--primary-mid);border-radius:3px 3px 0 0"></span>
-            <span style="height:24px;width:7px;background:var(--primary-mid);border-radius:3px 3px 0 0"></span>
-            <span style="height:20px;width:7px;background:var(--primary-mid);border-radius:3px 3px 0 0"></span>
-            <span style="height:32px;width:7px;background:var(--primary);border-radius:3px 3px 0 0"></span>
-            <span style="height:26px;width:7px;background:var(--primary);border-radius:3px 3px 0 0"></span>
-            <span style="height:38px;width:7px;background:var(--primary);border-radius:3px 3px 0 0"></span>
-          </div>
-        </div>
-        <div class="hcf hcf-2">
-          <div style="display:flex;align-items:center;gap:.4rem">
-            <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block"></span>
-            <span style="color:var(--muted);font-size:.7rem">Project Status</span>
-          </div>
-          <div class="val" style="font-size:.97rem;margin-top:.25rem">Website Launched 🚀</div>
-        </div>
-
-        <!-- Professional SVG Illustration -->
-        <svg viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:540px;display:block">
-          <!-- Background card -->
-          <rect x="20" y="20" width="480" height="380" rx="24" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
-          <!-- Browser bar -->
-          <rect x="20" y="20" width="480" height="56" rx="24" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
-          <rect x="20" y="52" width="480" height="24" fill="white"/>
-          <circle cx="55" cy="48" r="6.5" fill="#fca5a5"/>
-          <circle cx="76" cy="48" r="6.5" fill="#fcd34d"/>
-          <circle cx="97" cy="48" r="6.5" fill="#86efac"/>
-          <rect x="128" y="40" width="264" height="18" rx="9" fill="#f1f5f9"/>
-          <text x="260" y="53" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">https://techmaster.in</text>
-          <!-- Nav bar in browser -->
-          <rect x="40" y="88" width="440" height="38" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
-          <rect x="58" y="99" width="48" height="14" rx="6" fill="#eff6ff"/>
-          <rect x="114" y="99" width="48" height="14" rx="6" fill="#eff6ff"/>
-          <rect x="170" y="99" width="48" height="14" rx="6" fill="#eff6ff"/>
-          <rect x="226" y="99" width="48" height="14" rx="6" fill="#eff6ff"/>
-          <rect x="366" y="97" width="94" height="20" rx="10" fill="#1a56db"/>
-          <!-- Hero text blocks -->
-          <rect x="46" y="146" width="190" height="14" rx="7" fill="#0f172a"/>
-          <rect x="46" y="166" width="170" height="14" rx="7" fill="#0f172a"/>
-          <rect x="46" y="186" width="140" height="14" rx="7" fill="#0f172a"/>
-          <rect x="46" y="210" width="220" height="9" rx="4.5" fill="#cbd5e1"/>
-          <rect x="46" y="224" width="200" height="9" rx="4.5" fill="#cbd5e1"/>
-          <rect x="46" y="238" width="180" height="9" rx="4.5" fill="#cbd5e1"/>
-          <!-- CTA buttons -->
-          <rect x="46" y="260" width="100" height="26" rx="13" fill="#1a56db"/>
-          <rect x="154" y="260" width="100" height="26" rx="13" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
-          <text x="96" y="277" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="600">Start Project →</text>
-          <text x="204" y="277" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#334155" text-anchor="middle" font-weight="600">View Pricing</text>
-
-          <!-- Right-side person illustration -->
-          <!-- Shadow ellipse -->
-          <ellipse cx="390" cy="345" rx="65" ry="11" fill="#e2e8f0" opacity=".5"/>
-          <!-- Desk / laptop -->
-          <rect x="332" y="268" width="116" height="74" rx="8" fill="#1a56db"/>
-          <rect x="336" y="272" width="108" height="62" rx="6" fill="#3b82f6"/>
-          <!-- Screen lines -->
-          <rect x="348" y="282" width="55" height="5" rx="2.5" fill="rgba(255,255,255,.55)"/>
-          <rect x="348" y="292" width="40" height="5" rx="2.5" fill="rgba(255,255,255,.35)"/>
-          <rect x="348" y="302" width="60" height="5" rx="2.5" fill="rgba(255,255,255,.35)"/>
-          <rect x="348" y="315" width="35" height="12" rx="6" fill="rgba(255,255,255,.85)"/>
-          <!-- Laptop base -->
-          <rect x="322" y="342" width="136" height="9" rx="4.5" fill="#94a3b8"/>
-          <!-- Person body -->
-          <path d="M358 260 Q362 248 390 246 Q418 248 422 260 L428 320 L352 320 Z" fill="#1e40af"/>
-          <!-- Head -->
-          <circle cx="390" cy="228" r="22" fill="#fde68a" stroke="#f59e0b" stroke-width="1.5"/>
-          <!-- Hair -->
-          <path d="M368 228 Q368 206 390 204 Q412 206 412 228" fill="#1c1917"/>
-          <!-- Face features -->
-          <circle cx="383" cy="225" r="2.8" fill="#92400e"/>
-          <circle cx="397" cy="225" r="2.8" fill="#92400e"/>
-          <path d="M383 235 Q390 242 397 235" stroke="#92400e" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          <!-- Arms -->
-          <path d="M355 268 Q336 278 332 294" stroke="#fde68a" stroke-width="11" stroke-linecap="round" fill="none"/>
-          <path d="M425 268 Q444 278 448 294" stroke="#fde68a" stroke-width="11" stroke-linecap="round" fill="none"/>
-          <!-- Hands on laptop -->
-          <circle cx="332" cy="296" r="9" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
-          <circle cx="448" cy="296" r="9" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
-          <!-- Sparkles -->
-          <text x="288" y="200" font-size="22" fill="#fbbf24" opacity=".75">✦</text>
-          <text x="450" y="230" font-size="14" fill="#a5b4fc" opacity=".75">✦</text>
-          <text x="465" y="170" font-size="24" fill="#34d399" opacity=".6">✦</text>
-          <!-- Service pills -->
-          <rect x="46" y="306" width="98" height="24" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
-          <text x="95" y="322" font-family="Plus Jakarta Sans,sans-serif" font-size="8.5" fill="#1a56db" text-anchor="middle" font-weight="600">Web Design</text>
-          <rect x="152" y="306" width="98" height="24" rx="12" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
-          <text x="201" y="322" font-family="Plus Jakarta Sans,sans-serif" font-size="8.5" fill="#16a34a" text-anchor="middle" font-weight="600">Web Dev</text>
-          <rect x="258" y="306" width="116" height="24" rx="12" fill="#fdf4ff" stroke="#f0abfc" stroke-width="1"/>
-          <text x="316" y="322" font-family="Plus Jakarta Sans,sans-serif" font-size="8.5" fill="#a21caf" text-anchor="middle" font-weight="600">Social Media</text>
-          <!-- Star rating -->
-          <text x="46" y="358" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#94a3b8">★★★★★ 5.0 — Trusted by 50+ clients</text>
-        </svg>
+    </div>
+    <div class="hero-img fade-right d2">
+      <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&q=80" alt="Digital Agency Work"/>
+      <div class="hpill p1">
+        <div class="pi pi-b"><i class="bi bi-graph-up-arrow"></i></div>
+        <div><div class="pn">+124%</div><div class="pl">Monthly Reach</div></div>
       </div>
-
+      <div class="hpill p2">
+        <div class="pi pi-g"><i class="bi bi-check-circle-fill"></i></div>
+        <div><div class="pn">100%</div><div class="pl">Client Satisfaction</div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ CLIENTS STRIP ══ -->
+<!-- STRIP -->
 <div class="strip">
-  <div class="container">
-    <div class="d-flex align-items-center gap-4 flex-wrap justify-content-center">
-      <span class="strip-label">Trusted by growing brands</span>
-      <div class="d-flex align-items-center gap-4 flex-wrap justify-content-center">
-        <span class="cli-item">Nexora</span>
-        <span class="cli-item">Vortex Co.</span>
-        <span class="cli-item">Skyline</span>
-        <span class="cli-item">Prism Labs</span>
-        <span class="cli-item">Kratos</span>
-        <span class="cli-item">Zenpay</span>
+  <div class="si">
+    <span class="slbl">Trusted by</span>
+    <span class="cli">Nexora</span><span class="cli">Vortex Co.</span><span class="cli">Skyline Labs</span>
+    <span class="cli">Prism Media</span><span class="cli">Kratos</span><span class="cli">Zenpay</span>
+    <span class="cli">Orbis Tech</span><span class="cli">Helios</span>
+    <span class="slbl">Trusted by</span>
+    <span class="cli">Nexora</span><span class="cli">Vortex Co.</span><span class="cli">Skyline Labs</span>
+    <span class="cli">Prism Media</span><span class="cli">Kratos</span><span class="cli">Zenpay</span>
+    <span class="cli">Orbis Tech</span><span class="cli">Helios</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="c">
+    <div class="gh">
+      <div class="fade-up">
+        <div class="sl">What We Do</div>
+        <h2 class="st">Services Built for<br>Real Business Growth</h2>
       </div>
+      <p class="sb fade-up d1">We combine design expertise, technical skill, and social media knowledge to deliver a comprehensive digital presence that actually works.</p>
+    </div>
+    <div class="sg">
+      <div class="sc fade-up d1">
+        <div class="sic si-b"><i class="bi bi-palette2"></i></div>
+        <h3>Web Designing</h3>
+        <p>Visually stunning, conversion-focused UI/UX design that makes your brand unforgettable. Every layout crafted for maximum impact and user delight.</p>
+        <div class="tags"><span class="tag">UI/UX</span><span class="tag">Figma</span><span class="tag">Responsive</span><span class="tag">Prototyping</span></div>
+      </div>
+      <div class="sc fade-up d2">
+        <div class="sic si-g"><i class="bi bi-code-slash"></i></div>
+        <h3>Web Development</h3>
+        <p>Fast, secure, and scalable websites and web apps. From landing pages to full-stack platforms — built with clean code and modern technology.</p>
+        <div class="tags"><span class="tag">HTML/CSS/JS</span><span class="tag">React</span><span class="tag">WordPress</span><span class="tag">Full Stack</span></div>
+      </div>
+      <div class="sc fade-up d3">
+        <div class="sic si-p"><i class="bi bi-instagram"></i></div>
+        <h3>Social Media Handling</h3>
+        <p>Strategic content creation, scheduling, and community management that grows your followers, increases engagement, and drives real results.</p>
+        <div class="tags"><span class="tag">Instagram</span><span class="tag">Reels</span><span class="tag">Graphic Design</span><span class="tag">Strategy</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE -->
+<section class="sec bg">
+  <div class="c">
+    <div class="fade-up" style="margin-bottom:2.5rem">
+      <div class="sl">Our Work</div>
+      <h2 class="st">Recent Projects</h2>
+    </div>
+    <div class="shg">
+      <div class="shi tall fade-left">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&auto=format&q=80" alt="Analytics" style="height:100%;min-height:340px"/>
+        <div class="cap"><span>Analytics Dashboard</span></div>
+      </div>
+      <div class="shi fade-up d1" style="min-height:160px">
+        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500&auto=format&q=80" alt="Social" style="height:100%;min-height:160px"/>
+        <div class="cap"><span>Social Media Strategy</span></div>
+      </div>
+      <div class="shi fade-up d2" style="min-height:160px">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&auto=format&q=80" alt="Branding" style="height:100%;min-height:160px"/>
+        <div class="cap"><span>Brand Identity</span></div>
+      </div>
+      <div class="shi fade-up d3" style="min-height:160px">
+        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=500&auto=format&q=80" alt="Design" style="height:100%;min-height:160px"/>
+        <div class="cap"><span>Web Design</span></div>
+      </div>
+      <div class="shi fade-right d1" style="min-height:160px">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&auto=format&q=80" alt="Team" style="height:100%;min-height:160px"/>
+        <div class="cap"><span>Team Collaboration</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="process">
+  <div class="c">
+    <div class="pg">
+      <div class="fade-left">
+        <div class="sl">How We Work</div>
+        <h2 class="st">Our Simple 4-Step Process</h2>
+        <p class="sb" style="margin-bottom:2.2rem">A proven workflow that keeps you informed at every stage and delivers outstanding results on time, every time.</p>
+        <a href="#contact" class="btn-p" style="display:inline-flex">Start a Project <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div class="steps fade-right">
+        <div class="step"><div class="sn">1</div><div><h4>Discovery & Brief</h4><p>We study your business, goals, target audience, and competitors to craft a winning strategy tailored to you.</p></div></div>
+        <div class="step"><div class="sn">2</div><div><h4>Design & Planning</h4><p>Our design team creates mockups and content plans, getting your sign-off before any development begins.</p></div></div>
+        <div class="step"><div class="sn">3</div><div><h4>Development & Creation</h4><p>We build your website or create social media content with precision, speed, and rigorous quality control.</p></div></div>
+        <div class="step"><div class="sn">4</div><div><h4>Launch & Ongoing Support</h4><p>We go live, monitor performance, and provide dedicated support to ensure continued growth.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="sec bg" id="plans">
+  <div class="c">
+    <div class="fade-up" style="text-align:center;max-width:540px;margin:0 auto 3.5rem">
+      <div class="sl" style="justify-content:center">Social Media Plans</div>
+      <h2 class="st">Simple, Transparent Pricing</h2>
+      <p class="sb" style="margin:0 auto">Flexible packages with no hidden fees. Consistent quality every month.</p>
+    </div>
+    <div class="plg">
+      <div class="plan fade-up d1">
+        <div class="pt t-s">⬡ Silver Plan</div>
+        <div class="pp"><sup>₹</sup>499<sub>/mo</sub></div>
+        <p class="pd">Ideal for new businesses building a consistent, professional social media presence.</p>
+        <ul class="pf">
+          <li><i class="bi bi-check-circle-fill ok"></i> 5 Posts per month</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Custom graphic design</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Caption writing</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Hashtag strategy</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Instagram scheduling</li>
+          <li class="off"><i class="bi bi-x-circle"></i> Reels not included</li>
+          <li class="off"><i class="bi bi-x-circle"></i> Analytics report</li>
+        </ul>
+        <button class="btn-pl" onclick="location.href='#contact'">Choose Silver</button>
+      </div>
+      <div class="plan feat fade-up d2">
+        <div class="flbl">⭐ Most Popular</div>
+        <div class="pt t-g">★ Gold Plan</div>
+        <div class="pp"><sup>₹</sup>799<sub>/mo</sub></div>
+        <p class="pd">For growing brands that want more reach with powerful reels and additional posts.</p>
+        <ul class="pf">
+          <li><i class="bi bi-check-circle-fill ok"></i> 7 Posts per month</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> 1 Reel per month</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Premium graphic design</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Caption + hashtag strategy</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Priority scheduling</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Engagement monitoring</li>
+          <li class="off"><i class="bi bi-x-circle"></i> Full analytics report</li>
+        </ul>
+        <button class="btn-pl fill" onclick="location.href='#contact'">Choose Gold</button>
+      </div>
+      <div class="plan fade-up d3">
+        <div class="pt t-p">💎 Premium Plan</div>
+        <div class="pp"><sup>₹</sup>1200<sub>/mo</sub></div>
+        <p class="pd">For businesses serious about dominating social media and achieving maximum brand growth.</p>
+        <ul class="pf">
+          <li><i class="bi bi-check-circle-fill ok"></i> 10 Posts per month</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> 2 Reels per month</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Premium graphic design</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Full caption strategy</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Trending hashtags</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Community engagement</li>
+          <li><i class="bi bi-check-circle-fill ok"></i> Monthly analytics report</li>
+        </ul>
+        <button class="btn-pl" style="border-color:#ddd6fe;color:#7c3aed" onclick="location.href='#contact'">Choose Premium</button>
+      </div>
+    </div>
+    <div class="fade-up" style="margin-top:1.8rem;text-align:center">
+      <p style="font-size:.85rem;color:var(--muted)">All plans include Instagram management. Need something custom? <a href="#contact" style="color:var(--blue);font-weight:600">Contact us</a> for a tailored package.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band fade-up">
+  <div class="c">
+    <div class="stg">
+      <div style="text-align:center"><div class="stn" data-t="50">0+</div><div class="stl">Projects Delivered</div></div>
+      <div style="text-align:center"><div class="stn" data-t="30">0+</div><div class="stl">Social Accounts Managed</div></div>
+      <div style="text-align:center"><div class="stn" data-t="2">0+</div><div class="stl">Years of Experience</div></div>
+      <div style="text-align:center"><div class="stn" data-t="100" data-s="%">0%</div><div class="stl">Client Satisfaction</div></div>
     </div>
   </div>
 </div>
 
-<!-- ══ SERVICES ══ -->
-<section id="services">
-  <div class="container">
-    <div class="row align-items-end mb-5 reveal">
-      <div class="col-lg-6">
-        <div class="sec-ey">What We Do</div>
-        <h2 class="sec-title">Services Built for<br>Real Business Growth</h2>
+<!-- WHY -->
+<section class="sec" id="why">
+  <div class="c">
+    <div class="wg">
+      <div class="fade-left">
+        <div class="sl">Why Choose Us</div>
+        <h2 class="st">A Partner You Can<br>Actually Trust</h2>
+        <p class="sb" style="margin-bottom:2rem">We're a small, dedicated team that genuinely cares about your brand's success — every project gets our full attention.</p>
+        <div class="tcard">
+          <span class="qm">"</span>
+          <p class="qt">"tecHMaster transformed our online presence completely. Our inquiries doubled within 2 months of the new website launch."</p>
+          <p class="qa">— Client, Rajkot Retail Brand</p>
+        </div>
       </div>
-      <div class="col-lg-5 offset-lg-1">
-        <p class="sec-body">We combine design expertise, technical skill, and social media knowledge to deliver a comprehensive digital presence that actually works.</p>
+      <div class="wi fade-right">
+        <div class="witem"><div class="wic"><i class="bi bi-lightning-charge-fill"></i></div><div><h4>Fast Turnaround</h4><p>We deliver on time, every time. Quick execution without compromising quality.</p></div></div>
+        <div class="witem"><div class="wic"><i class="bi bi-shield-check-fill"></i></div><div><h4>Trusted & Transparent</h4><p>Clear communication, honest pricing, and regular updates throughout every project.</p></div></div>
+        <div class="witem"><div class="wic"><i class="bi bi-graph-up-arrow"></i></div><div><h4>Results Focused</h4><p>We build for conversions, engagement, and measurable growth — not just looks.</p></div></div>
+        <div class="witem"><div class="wic"><i class="bi bi-headset"></i></div><div><h4>Dedicated Support</h4><p>You'll always have someone to talk to — before, during, and after every project.</p></div></div>
+        <div class="witem"><div class="wic"><i class="bi bi-geo-alt-fill"></i></div><div><h4>Local Expertise</h4><p>Based in Rajkot — we understand Indian markets, businesses, and audiences firsthand.</p></div></div>
       </div>
     </div>
-    <div class="row g-4">
-      <div class="col-md-4 reveal">
-        <div class="svc-card">
-          <div class="svc-ic ic-blue"><i class="bi bi-palette2"></i></div>
-          <h5>Web Designing</h5>
-          <p>Visually stunning, conversion-focused UI/UX design that makes your brand unforgettable. Every layout crafted for maximum impact and user delight.</p>
-          <div class="svc-tags"><span class="stag">UI/UX</span><span class="stag">Figma</span><span class="stag">Responsive</span><span class="stag">Prototyping</span></div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="sec bg" id="team">
+  <div class="c">
+    <div class="fade-up" style="text-align:center; max-width:540px; margin:0 auto 3.5rem">
+      <div class="sl" style="justify-content:center">Meet The Team</div>
+      <h2 class="st">The People Behind tecHMaster</h2>
+      <p class="sb" style="margin:0 auto">A passionate team of digital experts committed to delivering results that matter for your business.</p>
+    </div>
+
+    <div class="tg">
+      <!-- Dhruvrajsinh Sarvaiya - CEO & Founder -->
+      <div class="tmcard fade-up d1">
+        <div class="av-wrap">
+          <div class="av-fb av1">
+            <img 
+              src="https://img.freepik.com/free-psd/3d-illustration-businessman-with-laptop_23-2149436203.jpg" 
+              alt="Dhruvrajsinh Sarvaiya" 
+              style="width:100%; height:100%; border-radius:50%; object-fit:cover;"
+            >
+          </div>
+          <div class="av-badge">👑</div> <!-- added back for consistency -->
+        </div>
+        <h3>Dhruvrajsinh Sarvaiya</h3>
+        <span class="tr">CEO & Founder</span>
+        <p>Visionary leader driving tecHMaster's strategic direction. Passionate about building digital products that create real business impact for clients.</p>
+        <div class="tsoc">
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-whatsapp"></i></a>
         </div>
       </div>
-      <div class="col-md-4 reveal">
-        <div class="svc-card">
-          <div class="svc-ic ic-green"><i class="bi bi-code-slash"></i></div>
-          <h5>Web Development</h5>
-          <p>Fast, secure, and scalable websites and web apps. From landing pages to full-stack platforms — built with clean code and modern technology.</p>
-          <div class="svc-tags"><span class="stag">HTML/CSS/JS</span><span class="stag">React</span><span class="stag">WordPress</span><span class="stag">Full Stack</span></div>
+
+      <!-- Harpalsinh Sarvaiya - Co-Founder -->
+      <div class="tmcard fade-up d2">
+        <div class="av-wrap">
+          <div class="av-fb av2">
+            <img 
+              src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671138.jpg" 
+              alt="Harpalsinh Sarvaiya" 
+              style="width:100%; height:100%; border-radius:50%; object-fit:cover;"
+            >
+          </div>
+          <div class="av-badge">🤝</div>
+        </div>
+        <h3>Harpalsinh Sarvaiya</h3>
+        <span class="tr" style="color:#7c3aed">Co-Founder</span>
+        <p>Strategic thinker and business development expert who ensures every client receives exceptional value and measurable results from our work.</p>
+        <div class="tsoc">
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-whatsapp"></i></a>
         </div>
       </div>
-      <div class="col-md-4 reveal">
-        <div class="svc-card">
-          <div class="svc-ic ic-purple"><i class="bi bi-instagram"></i></div>
-          <h5>Social Media Handling</h5>
-          <p>Strategic content creation, scheduling, and community management that grows your followers, increases engagement, and drives real results.</p>
-          <div class="svc-tags"><span class="stag">Instagram</span><span class="stag">Reels</span><span class="stag">Graphic Design</span><span class="stag">Strategy</span></div>
+
+      <!-- Yash Sangani - Design Master -->
+      <div class="tmcard fade-up d3">
+        <div class="av-wrap">
+          <div class="av-fb av3">
+            <img 
+              src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436198.jpg" 
+              alt="Yash Sangani" 
+              style="width:100%; height:100%; border-radius:50%; object-fit:cover;"
+            >
+          </div>
+          <div class="av-badge">🎨</div>
+        </div>
+        <h3>Yash Sangani</h3>
+        <span class="tr" style="color:#d97706">Design Master</span>
+        <p>Creative genius behind every visual element at tecHMaster. Transforms ideas into stunning designs that captivate audiences and elevate brands.</p>
+        <div class="tsoc">
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-behance"></i></a>
+          <a href="#"><i class="bi bi-dribbble"></i></a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ PROCESS ══ -->
-<section id="process">
-  <div class="container">
-    <div class="row gy-5 align-items-center">
-      <div class="col-lg-5 reveal">
-        <div class="sec-ey">How We Work</div>
-        <h2 class="sec-title">Our Simple 4-Step Process</h2>
-        <p class="sec-body mb-4">A proven workflow that keeps you informed at every stage and delivers outstanding results on time, every time.</p>
-        <a href="#contact" class="btn-prim">Start a Project <i class="bi bi-arrow-right"></i></a>
-      </div>
-      <div class="col-lg-6 offset-lg-1 reveal">
-        <div class="proc-step">
-          <div class="proc-n">1</div>
-          <h6>Discovery & Brief</h6>
-          <p>We study your business, goals, target audience, and competitors to craft a winning strategy tailored to you.</p>
-        </div>
-        <div class="proc-step">
-          <div class="proc-n">2</div>
-          <h6>Design & Planning</h6>
-          <p>Our design team creates mockups and content plans, getting your sign-off before any development begins.</p>
-        </div>
-        <div class="proc-step">
-          <div class="proc-n">3</div>
-          <h6>Development & Creation</h6>
-          <p>We build your website or create social media content with precision, speed, and rigorous quality control.</p>
-        </div>
-        <div class="proc-step">
-          <div class="proc-n">4</div>
-          <h6>Launch & Ongoing Support</h6>
-          <p>We go live, monitor performance, and provide dedicated support to ensure continued growth.</p>
-        </div>
-      </div>
+<!-- CONTACT -->
+<section class="sec" id="contact">
+  <div class="c">
+    <div class="fade-up" style="text-align:center;max-width:540px;margin:0 auto 3.5rem">
+      <div class="sl" style="justify-content:center">Get In Touch</div>
+      <h2 class="st">Let's Work Together</h2>
+      <p class="sb" style="margin:0 auto">Ready to grow your business online? Tell us about your project and we'll respond within 24 hours.</p>
     </div>
-  </div>
-</section>
-
-<!-- ══ PLANS ══ -->
-<section id="plans">
-  <div class="container">
-    <div class="row justify-content-center text-center mb-5 reveal">
-      <div class="col-lg-6">
-        <div class="sec-ey">Social Media Plans</div>
-        <h2 class="sec-title">Simple, Transparent Pricing</h2>
-        <p class="sec-body mx-auto">Flexible social media management packages with no hidden fees. Just consistent, quality content every month.</p>
-      </div>
-    </div>
-    <div class="row g-4 justify-content-center align-items-stretch">
-
-      <div class="col-md-4 reveal">
-        <div class="plan-card">
-          <div class="plan-tier t-silver">⬡ Silver Plan</div>
-          <div class="plan-price"><sup>₹</sup>499<sub>/mo</sub></div>
-          <p class="plan-desc">Ideal for new businesses looking to build a consistent, professional social media presence.</p>
-          <ul class="plan-features">
-            <li><i class="bi bi-check-circle-fill"></i> 5 Posts per month</li>
-            <li><i class="bi bi-check-circle-fill"></i> Custom graphic design</li>
-            <li><i class="bi bi-check-circle-fill"></i> Caption writing</li>
-            <li><i class="bi bi-check-circle-fill"></i> Hashtag strategy</li>
-            <li><i class="bi bi-check-circle-fill"></i> Instagram scheduling</li>
-            <li class="off"><i class="bi bi-x-circle"></i> Reels not included</li>
-            <li class="off"><i class="bi bi-x-circle"></i> Analytics report</li>
-          </ul>
-          <button class="btn-pplan-out" onclick="location.href='#contact'">Choose Silver</button>
-        </div>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <div class="plan-card featured">
-          <div class="feat-badge">⭐ Most Popular</div>
-          <div class="plan-tier t-gold">★ Gold Plan</div>
-          <div class="plan-price"><sup>₹</sup>799<sub>/mo</sub></div>
-          <p class="plan-desc">For growing brands that want more reach with powerful reels and additional posts.</p>
-          <ul class="plan-features">
-            <li><i class="bi bi-check-circle-fill"></i> 7 Posts per month</li>
-            <li><i class="bi bi-check-circle-fill"></i> 1 Reel per month</li>
-            <li><i class="bi bi-check-circle-fill"></i> Premium graphic design</li>
-            <li><i class="bi bi-check-circle-fill"></i> Caption + hashtag strategy</li>
-            <li><i class="bi bi-check-circle-fill"></i> Priority scheduling</li>
-            <li><i class="bi bi-check-circle-fill"></i> Engagement monitoring</li>
-            <li class="off"><i class="bi bi-x-circle"></i> Full analytics report</li>
-          </ul>
-          <button class="btn-pplan" onclick="location.href='#contact'">Choose Gold</button>
-        </div>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <div class="plan-card">
-          <div class="plan-tier t-prem">💎 Premium Plan</div>
-          <div class="plan-price"><sup>₹</sup>1200<sub>/mo</sub></div>
-          <p class="plan-desc">For businesses serious about dominating their social media and achieving maximum brand growth.</p>
-          <ul class="plan-features">
-            <li><i class="bi bi-check-circle-fill"></i> 10 Posts per month</li>
-            <li><i class="bi bi-check-circle-fill"></i> 2 Reels per month</li>
-            <li><i class="bi bi-check-circle-fill"></i> Premium graphic design</li>
-            <li><i class="bi bi-check-circle-fill"></i> Full caption strategy</li>
-            <li><i class="bi bi-check-circle-fill"></i> Trending hashtags</li>
-            <li><i class="bi bi-check-circle-fill"></i> Community engagement</li>
-            <li><i class="bi bi-check-circle-fill"></i> Monthly analytics report</li>
-          </ul>
-          <button class="btn-pplan-out" style="border-color:#c084fc;color:#7c3aed" onclick="location.href='#contact'">Choose Premium</button>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center mt-4 reveal">
-      <div class="col-lg-8">
-        <div class="d-flex align-items-center gap-3 p-3 rounded-3" style="background:var(--bg);border:1.5px solid var(--border)">
-          <i class="bi bi-info-circle-fill" style="color:var(--primary);font-size:1.1rem;flex-shrink:0"></i>
-          <p style="font-size:.86rem;color:var(--muted);margin:0">All plans include Instagram management. Need something custom? <a href="#contact" style="color:var(--primary);font-weight:600">Contact us</a> for a tailored package.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ STATS BAND ══ -->
-<div class="stats-band reveal">
-  <div class="container">
-    <div class="row g-4 text-center">
-      <div class="col-6 col-md-3"><div class="stat-num" data-target="0">0+</div><div class="stat-lbl">Projects Delivered</div></div>
-      <div class="col-6 col-md-3"><div class="stat-num" data-target="0">0+</div><div class="stat-lbl">Social Accounts Managed</div></div>
-      <div class="col-6 col-md-3"><div class="stat-num" data-target="0">0+</div><div class="stat-lbl">Years of Experience</div></div>
-      <div class="col-6 col-md-3"><div class="stat-num" data-target="0">0%</div><div class="stat-lbl">Client Satisfaction</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ WHY US ══ -->
-<section id="why">
-  <div class="container">
-    <div class="row align-items-center gy-5">
-      <div class="col-lg-5 reveal">
-        <div class="sec-ey">Why Choose Us</div>
-        <h2 class="sec-title">A Partner You Can Actually Trust</h2>
-        <p class="sec-body">We're not just another agency. We're a small, dedicated team that genuinely cares about your brand's success — every project gets our full attention.</p>
-        <div class="mt-4 p-4 rounded-3" style="background:var(--primary-light);border:1.5px solid var(--primary-mid)">
-          <i class="bi bi-quote" style="font-size:2rem;color:var(--primary);line-height:1;display:block;margin-bottom:.5rem"></i>
-          <p style="font-size:.9rem;color:var(--dark);font-style:italic;margin:0;line-height:1.65">"tecHMaster transformed our online presence completely. Our inquiries doubled within 2 months of the new website launch."</p>
-          <p style="font-size:.78rem;color:var(--muted);margin-top:.6rem;font-weight:600;margin-bottom:0">— Client, Rajkot Retail Brand</p>
-        </div>
-      </div>
-      <div class="col-lg-6 offset-lg-1 reveal">
-        <div class="why-item">
-          <div class="why-ic"><i class="bi bi-lightning-charge-fill"></i></div>
-          <div><h6>Fast Turnaround</h6><p>We deliver on time, every time. Quick execution without compromising quality.</p></div>
-        </div>
-        <div class="why-item">
-          <div class="why-ic"><i class="bi bi-shield-check-fill"></i></div>
-          <div><h6>Trusted & Transparent</h6><p>Clear communication, honest pricing, and regular updates throughout every project.</p></div>
-        </div>
-        <div class="why-item">
-          <div class="why-ic"><i class="bi bi-graph-up-arrow"></i></div>
-          <div><h6>Results Focused</h6><p>We build for conversions, engagement, and measurable growth — not just looks.</p></div>
-        </div>
-        <div class="why-item">
-          <div class="why-ic"><i class="bi bi-headset"></i></div>
-          <div><h6>Dedicated Support</h6><p>You'll always have someone to talk to — before, during, and after every project.</p></div>
-        </div>
-        <div class="why-item">
-          <div class="why-ic"><i class="bi bi-geo-alt-fill"></i></div>
-          <div><h6>Local Expertise</h6><p>Based in Rajkot — we understand Indian markets, businesses, and audiences firsthand.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ TEAM ══ -->
-<section id="team">
-  <div class="container">
-    <div class="row justify-content-center text-center mb-5 reveal">
-      <div class="col-lg-6">
-        <div class="sec-ey">Meet The Team</div>
-        <h2 class="sec-title">The People Behind tecHMaster</h2>
-        <p class="sec-body mx-auto">A passionate team of digital experts committed to delivering results that matter for your business.</p>
-      </div>
-    </div>
-    <div class="row g-4 justify-content-center">
-      <div class="col-md-4 reveal">
-        <div class="team-card">
-          <div class="t-avatar ta1">DS<div class="t-badge">👑</div></div>
-          <h5>Dhruvrajsinh Sarvaiya</h5>
-          <div class="team-role">CEO & Founder</div>
-          <p>Visionary leader driving tecHMaster's strategic direction. Passionate about building digital products that create real business impact for clients.</p>
-          <div class="t-soc">
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
-            <a href="#"><i class="bi bi-whatsapp"></i></a>
+    <div class="cg">
+      <div class="fade-left">
+        <p style="font-weight:700;font-size:1rem;color:var(--dark);margin-bottom:0">Contact Details</p>
+        <div class="clist">
+          <a href="mailto:hello@techmaster.in" class="ci" style="text-decoration:none">
+            <div class="ci-i c-b"><i class="bi bi-envelope-fill"></i></div>
+            <div><h5>Email Us</h5><span style="font-size:.83rem;color:var(--muted)">hello@techmaster.in</span></div>
+          </a>
+          <a href="https://wa.me/919999999999" class="ci" style="text-decoration:none" target="_blank">
+            <div class="ci-i c-g"><i class="bi bi-whatsapp"></i></div>
+            <div><h5>WhatsApp</h5><span style="font-size:.83rem;color:var(--muted)">+91 99999 99999</span></div>
+          </a>
+          <a href="https://instagram.com/techmaster" class="ci" style="text-decoration:none" target="_blank">
+            <div class="ci-i c-y"><i class="bi bi-instagram"></i></div>
+            <div><h5>Instagram</h5><span style="font-size:.83rem;color:var(--muted)">@techmaster</span></div>
+          </a>
+          <div class="ci">
+            <div class="ci-i c-o"><i class="bi bi-geo-alt-fill"></i></div>
+            <div><h5>Location</h5><p>Rajkot, Gujarat, India</p></div>
           </div>
         </div>
+        <div class="otag"><div class="odot"></div><p>We typically respond within 2–4 hours on business days.</p></div>
       </div>
-      <div class="col-md-4 reveal">
-        <div class="team-card">
-          <div class="t-avatar ta2">HS<div class="t-badge">🤝</div></div>
-          <h5>Harpalsinh Sarvaiya</h5>
-          <div class="team-role" style="color:#7c3aed">Co-Founder</div>
-          <p>Strategic thinker and business development expert who ensures every client receives exceptional value and measurable results from our work.</p>
-          <div class="t-soc">
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-linkedin"></i></a>
-            <a href="#"><i class="bi bi-whatsapp"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 reveal">
-        <div class="team-card">
-          <div class="t-avatar ta3">YS<div class="t-badge">🎨</div></div>
-          <h5>Yash Sangani</h5>
-          <div class="team-role" style="color:#d97706">Design Master</div>
-          <p>Creative genius behind every visual element at tecHMaster. Transforms ideas into stunning designs that captivate audiences and elevate brands.</p>
-          <div class="t-soc">
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-behance"></i></a>
-            <a href="#"><i class="bi bi-dribbble"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CONTACT ══ -->
-<section id="contact">
-  <div class="container">
-    <div class="row justify-content-center text-center mb-5 reveal">
-      <div class="col-lg-6">
-        <div class="sec-ey">Get In Touch</div>
-        <h2 class="sec-title">Let's Work Together</h2>
-        <p class="sec-body mx-auto">Ready to grow your business online? Tell us about your project and we'll respond within 24 hours.</p>
-      </div>
-    </div>
-    <div class="row gy-5">
-      <div class="col-lg-5 reveal">
-        <h5 style="font-weight:700;color:var(--dark);margin-bottom:1.4rem;font-size:1.05rem">Contact Details</h5>
-        <div class="cinfo-item">
-          <div class="ci-ic"><i class="bi bi-envelope-fill"></i></div>
-          <div><h6>Email Us</h6><a href="mailto:hello@techmaster.in">hello@techmaster.in</a></div>
-        </div>
-        <div class="cinfo-item">
-          <div class="ci-ic g"><i class="bi bi-whatsapp"></i></div>
-          <div><h6>WhatsApp</h6><a href="https://wa.me/919999999999" target="_blank">+91 99999 99999</a></div>
-        </div>
-        <div class="cinfo-item">
-          <div class="ci-ic y"><i class="bi bi-instagram"></i></div>
-          <div><h6>Instagram</h6><a href="https://instagram.com/techmaster" target="_blank">@techmaster</a></div>
-        </div>
-        <div class="cinfo-item">
-          <div class="ci-ic a"><i class="bi bi-geo-alt-fill"></i></div>
-          <div><h6>Location</h6><p>Rajkot, Gujarat, India</p></div>
-        </div>
-        <div class="d-flex align-items-center gap-2 mt-2 p-3 rounded-3" style="background:var(--primary-light);border:1.5px solid var(--primary-mid)">
-          <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0"></span>
-          <p style="font-size:.84rem;color:var(--primary);margin:0;font-weight:600">We typically respond within 2–4 hours on business days.</p>
-        </div>
-      </div>
-      <div class="col-lg-7 reveal">
+      <div class="fade-right">
         <div class="cform">
-          <h5 style="font-weight:700;color:var(--dark);margin-bottom:1.4rem;font-size:1.05rem">Send Us a Message</h5>
-          <div class="row g-0">
-            <div class="col-md-6 pe-md-2">
-              <label>Your Name</label>
-              <input type="text" placeholder="Rahul Shah"/>
-            </div>
-            <div class="col-md-6 ps-md-2">
-              <label>Email Address</label>
-              <input type="email" placeholder="rahul@email.com"/>
-            </div>
-            <div class="col-12">
-              <label>Phone Number</label>
-              <input type="tel" placeholder="+91 98765 43210"/>
-            </div>
-            <div class="col-12">
-              <label>Service Interested In</label>
-              <select>
-                <option value="">Select a service...</option>
-                <option>Web Designing</option>
-                <option>Web Development</option>
-                <option>Social Media – Silver (₹499/mo)</option>
-                <option>Social Media – Gold (₹799/mo)</option>
-                <option>Social Media – Premium (₹1200/mo)</option>
-                <option>Multiple Services / Custom Package</option>
-              </select>
-            </div>
-            <div class="col-12">
-              <label>Your Message</label>
-              <textarea placeholder="Tell us about your project, goals, or questions..."></textarea>
-            </div>
-            <div class="col-12">
-              <button class="btn-prim w-100 justify-content-center py-3" id="sendBtn" onclick="submitForm(this)">
-                <i class="bi bi-send-fill"></i> Send Message
-              </button>
-            </div>
+          <h3>Send Us a Message</h3>
+          <div class="fr">
+            <div class="fg"><label>Your Name</label><input type="text" placeholder="Rahul Shah"/></div>
+            <div class="fg"><label>Email Address</label><input type="email" placeholder="rahul@email.com"/></div>
           </div>
+          <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210"/></div>
+          <div class="fg">
+            <label>Service Interested In</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Web Designing</option>
+              <option>Web Development</option>
+              <option>Social Media – Silver (₹499/mo)</option>
+              <option>Social Media – Gold (₹799/mo)</option>
+              <option>Social Media – Premium (₹1200/mo)</option>
+              <option>Multiple Services / Custom Package</option>
+            </select>
+          </div>
+          <div class="fg"><label>Your Message</label><textarea placeholder="Tell us about your project, goals, or questions..."></textarea></div>
+          <button class="btn-sub" id="sendBtn" onclick="submitForm(this)">
+            <i class="bi bi-send-fill"></i> Send Message
+          </button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="row gy-4">
-      <div class="col-lg-4">
-        <div class="d-flex align-items-center gap-2 mb-1">
-          <img src="techmaster_logo.jpg" alt="tecHMaster" style="height:36px"/>
-          <span class="ft-brand">tecHMaster</span>
-        </div>
-        <p style="font-size:.88rem;line-height:1.7;max-width:300px;margin-top:.8rem">A full-service digital agency crafting websites, brands, and social media strategies that drive real business growth from Rajkot, India.</p>
-        <div class="d-flex gap-2 mt-3">
-          <a href="#" class="ft-soc"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="ft-soc"><i class="bi bi-linkedin"></i></a>
-          <a href="#" class="ft-soc"><i class="bi bi-whatsapp"></i></a>
-          <a href="mailto:hello@techmaster.in" class="ft-soc"><i class="bi bi-envelope-fill"></i></a>
+  <div class="c">
+    <div class="fg2">
+      <div>
+        <div class="flogo">tec<em>H</em>Master</div>
+        <p class="fdesc">A full-service digital agency crafting websites, brands, and social media strategies that drive real business growth from Rajkot, India.</p>
+        <div class="fsoc-row">
+          <a href="#" class="fsoc"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="fsoc"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="fsoc"><i class="bi bi-whatsapp"></i></a>
+          <a href="mailto:hello@techmaster.in" class="fsoc"><i class="bi bi-envelope-fill"></i></a>
         </div>
       </div>
-      <div class="col-6 col-lg-2">
-        <h6>Company</h6>
-        <a href="#home" class="ft-link">Home</a>
-        <a href="#team" class="ft-link">Our Team</a>
-        <a href="#process" class="ft-link">Process</a>
-        <a href="#contact" class="ft-link">Contact</a>
+      <div>
+        <h4>Company</h4>
+        <a href="#home" class="fl">Home</a>
+        <a href="#team" class="fl">Our Team</a>
+        <a href="#process" class="fl">Process</a>
+        <a href="#contact" class="fl">Contact</a>
       </div>
-      <div class="col-6 col-lg-2">
-        <h6>Services</h6>
-        <a href="#services" class="ft-link">Web Designing</a>
-        <a href="#services" class="ft-link">Web Development</a>
-        <a href="#plans" class="ft-link">Social Media</a>
-        <a href="#plans" class="ft-link">Pricing Plans</a>
+      <div>
+        <h4>Services</h4>
+        <a href="#services" class="fl">Web Designing</a>
+        <a href="#services" class="fl">Web Development</a>
+        <a href="#plans" class="fl">Social Media</a>
+        <a href="#plans" class="fl">Pricing Plans</a>
       </div>
-      <div class="col-lg-4">
-        <h6>Quick Contact</h6>
-        <a href="mailto:hello@techmaster.in" class="ft-link d-flex align-items-center gap-2 mb-1"><i class="bi bi-envelope" style="color:var(--primary)"></i> hello@techmaster.in</a>
-        <a href="https://wa.me/919999999999" class="ft-link d-flex align-items-center gap-2 mb-1"><i class="bi bi-whatsapp" style="color:#22c55e"></i> +91 99999 99999</a>
-        <a href="https://instagram.com/techmaster" class="ft-link d-flex align-items-center gap-2 mb-1"><i class="bi bi-instagram" style="color:#e879f9"></i> @techmaster</a>
-        <a href="#" class="ft-link d-flex align-items-center gap-2"><i class="bi bi-geo-alt-fill" style="color:#f59e0b"></i> Rajkot, Gujarat, India</a>
+      <div>
+        <h4>Quick Contact</h4>
+        <a href="mailto:hello@techmaster.in" class="fl"><i class="bi bi-envelope" style="color:#60a5fa;margin-right:.4rem"></i>hello@techmaster.in</a>
+        <a href="https://wa.me/919999999999" class="fl"><i class="bi bi-whatsapp" style="color:#22c55e;margin-right:.4rem"></i>+91 99999 99999</a>
+        <a href="https://instagram.com/techmaster" class="fl"><i class="bi bi-instagram" style="color:#e879f9;margin-right:.4rem"></i>@techmaster</a>
+        <a href="#" class="fl"><i class="bi bi-geo-alt-fill" style="color:#fbbf24;margin-right:.4rem"></i>Rajkot, Gujarat, India</a>
       </div>
     </div>
-    <hr class="ft-hr"/>
-    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-      <p class="ft-bot mb-0">© 2025 tecHMaster. All rights reserved.</p>
-      <p class="ft-bot mb-0">Designed with ♥ by Team tecHMaster · Rajkot</p>
+    <hr class="fhr"/>
+    <div class="fbot">
+      <p>© 2025 tecHMaster. All rights reserved.</p>
+      <p>Designed with ♥ by Team tecHMaster · Rajkot</p>
     </div>
   </div>
 </footer>
 
-<!-- Back to Top -->
-<a href="#home" id="btt" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--primary);color:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0;pointer-events:none;transition:.3s;box-shadow:0 4px 16px rgba(26,86,219,.35);z-index:999">
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <i class="bi bi-arrow-up"></i>
-</a>
+</button>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Scroll Reveal
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
-},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+// Scroll reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el => io.observe(el));
 
-// Active nav link
-const secs = document.querySelectorAll('section[id]');
-const navs = document.querySelectorAll('.nav-link');
-const btt  = document.getElementById('btt');
-window.addEventListener('scroll',()=>{
-  let c='';
-  secs.forEach(s=>{ if(window.scrollY>=s.offsetTop-130) c=s.id; });
-  navs.forEach(l=>{ l.classList.remove('active'); if(l.getAttribute('href')==='#'+c) l.classList.add('active'); });
-  btt.style.opacity = window.scrollY>500?'1':'0';
-  btt.style.pointerEvents = window.scrollY>500?'auto':'none';
-},{passive:true});
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('up', window.scrollY > 30);
+  document.getElementById('btt').classList.toggle('show', window.scrollY > 500);
+}, { passive: true });
 
-// Counter animation
-const cobs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting) return;
-    e.target.querySelectorAll('.stat-num').forEach(n=>{
-      const tgt = parseInt(n.dataset.target)||0;
-      const suf = n.dataset.target.includes('%')?'%':'+';
-      let v=0; const step=Math.max(1,Math.ceil(tgt/50));
-      const t=setInterval(()=>{ v+=step; if(v>=tgt){n.textContent=tgt+suf;clearInterval(t);}else n.textContent=v+suf; },30);
+// Mobile menu
+const mb = document.getElementById('mb'), mm = document.getElementById('mm');
+mb.addEventListener('click', () => {
+  mm.classList.toggle('open');
+  mb.querySelector('i').className = mm.classList.contains('open') ? 'bi bi-x' : 'bi bi-list';
+});
+mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mm.classList.remove('open'); mb.querySelector('i').className = 'bi bi-list';
+}));
+
+// Stats counter
+const sio = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.stn').forEach(n => {
+      const tgt = parseInt(n.dataset.t) || 0, suf = n.dataset.s || '+';
+      let v = 0; const step = Math.max(1, Math.ceil(tgt / 55));
+      const iv = setInterval(() => {
+        v += step;
+        if (v >= tgt) { n.textContent = tgt + suf; clearInterval(iv); }
+        else n.textContent = v + suf;
+      }, 22);
     });
-    cobs.unobserve(e.target);
+    sio.unobserve(e.target);
   });
-},{threshold:.3});
-const sb=document.querySelector('.stats-band');
-if(sb) cobs.observe(sb);
+}, { threshold: 0.3 });
+const sb2 = document.querySelector('.stats-band');
+if (sb2) sio.observe(sb2);
 
-// Form submit
-function submitForm(btn){
-  btn.innerHTML='<i class="bi bi-check-circle-fill"></i> Message Sent Successfully!';
-  btn.style.background='#16a34a';
-  btn.disabled=true;
-  setTimeout(()=>{
-    btn.innerHTML='<i class="bi bi-send-fill"></i> Send Message';
-    btn.style.background='';
-    btn.disabled=false;
-  },3500);
+// Form
+function submitForm(btn) {
+  btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Message Sent Successfully!';
+  btn.style.background = '#16a34a'; btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = '<i class="bi bi-send-fill"></i> Send Message';
+    btn.style.background = ''; btn.disabled = false;
+  }, 3500);
 }
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+// Hero entrance
+window.addEventListener('load', () => {
+  document.querySelectorAll('.hero .fade-up, .hero .fade-right').forEach((el, i) => {
+    setTimeout(() => el.classList.add('vis'), 80 + i * 110);
+  });
+});
 </script>
 </body>
 </html>
