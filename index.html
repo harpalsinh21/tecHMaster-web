@@ -1,772 +1,2011 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>tecHMaster — Web & Social Media Agency</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
-<style>
-:root {
-  --blue: #1a56db;
-  --blue-light: #eff6ff;
-  --blue-mid: #bfdbfe;
-  --dark: #0f172a;
-  --body: #334155;
-  --muted: #64748b;
-  --border: #e2e8f0;
-  --bg: #f8fafc;
-  --white: #ffffff;
-  --radius: 16px;
-  --shadow: 0 1px 3px rgba(15,23,42,.05), 0 4px 16px rgba(15,23,42,.06);
-  --shadow-md: 0 4px 24px rgba(15,23,42,.08), 0 1px 4px rgba(15,23,42,.04);
-  --shadow-lg: 0 12px 40px rgba(15,23,42,.10), 0 2px 8px rgba(15,23,42,.05);
-}
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body { background: var(--white); color: var(--body); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-h1,h2,h3 { font-family: 'DM Serif Display', serif; }
-a { text-decoration: none; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tecHMaster — Web & Social Media Agency</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <style>
+    :root {
+      --blue: #1a56db;
+      --blue-light: #eff6ff;
+      --blue-mid: #bfdbfe;
+      --dark: #0f172a;
+      --body: #334155;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --radius: 16px;
+      --shadow: 0 1px 3px rgba(15, 23, 42, .05), 0 4px 16px rgba(15, 23, 42, .06);
+      --shadow-md: 0 4px 24px rgba(15, 23, 42, .08), 0 1px 4px rgba(15, 23, 42, .04);
+      --shadow-lg: 0 12px 40px rgba(15, 23, 42, .10), 0 2px 8px rgba(15, 23, 42, .05);
+    }
 
-/* ── SCROLL ANIMATIONS ── */
-.fade-up   { opacity:0; transform:translateY(30px); transition: opacity .6s ease, transform .6s ease; }
-.fade-left { opacity:0; transform:translateX(-30px); transition: opacity .6s ease, transform .6s ease; }
-.fade-right{ opacity:0; transform:translateX(30px);  transition: opacity .6s ease, transform .6s ease; }
-.fade-up.vis, .fade-left.vis, .fade-right.vis { opacity:1; transform:none; }
-.d1{transition-delay:.08s}.d2{transition-delay:.17s}.d3{transition-delay:.26s}
-.d4{transition-delay:.35s}.d5{transition-delay:.44s}
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* ── NAVBAR ── */
-nav {
-  position: sticky; top:0; z-index: 1000;
-  background: rgba(255,255,255,.96); backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border); padding: .9rem 0; transition: box-shadow .3s;
-}
-nav.up { box-shadow: var(--shadow); }
-.nw { max-width:1240px; margin:auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
-.logo { font-family:'DM Serif Display',serif; font-size:1.45rem; color:var(--dark); }
-.logo em { font-style:italic; color:var(--blue); }
-.nl { display:flex; gap:.15rem; list-style:none; }
-.nl a { color:var(--muted); font-size:.88rem; font-weight:500; padding:.35rem .8rem; border-radius:8px; transition:.18s; }
-.nl a:hover { color:var(--dark); background:var(--bg); }
-.btn-nav { background:var(--blue); color:#fff; padding:.5rem 1.3rem; border-radius:10px; font-weight:600; font-size:.87rem; border:none; cursor:pointer; transition:.2s; white-space:nowrap; }
-.btn-nav:hover { background:#1749c0; transform:translateY(-1px); box-shadow:0 4px 16px rgba(26,86,219,.3); }
-.hbg { display:none; background:none; border:none; font-size:1.4rem; color:var(--dark); cursor:pointer; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* ── HERO ── */
-.hero { padding:100px 0 80px; position:relative; overflow:hidden; }
-.hero::after { content:''; position:absolute; top:-200px; right:-300px; width:700px; height:700px; border-radius:50%; background:radial-gradient(circle,rgba(26,86,219,.05),transparent 65%); pointer-events:none; }
-.hw { max-width:1240px; margin:auto; padding:0 2rem; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
-.badge { display:inline-flex; align-items:center; gap:.5rem; background:var(--blue-light); border:1px solid var(--blue-mid); border-radius:50px; padding:.28rem .9rem; font-size:.76rem; font-weight:600; color:var(--blue); letter-spacing:.04em; text-transform:uppercase; margin-bottom:1.3rem; }
-.badge span { width:6px; height:6px; border-radius:50%; background:var(--blue); }
-h1.ht { font-size:clamp(2.8rem,4.5vw,4rem); line-height:1.08; color:var(--dark); margin-bottom:1.2rem; }
-h1.ht em { font-style:italic; color:var(--blue); }
-.hsub { font-size:1rem; color:var(--muted); max-width:440px; line-height:1.75; margin-bottom:2rem; }
-.hbtns { display:flex; gap:.8rem; flex-wrap:wrap; }
-.btn-p { background:var(--blue); color:#fff; padding:.65rem 1.6rem; border-radius:10px; font-weight:600; font-size:.92rem; border:none; cursor:pointer; transition:.2s; display:inline-flex; align-items:center; gap:.5rem; }
-.btn-p:hover { background:#1749c0; transform:translateY(-1px); box-shadow:0 6px 20px rgba(26,86,219,.28); color:#fff; }
-.btn-o { background:var(--white); color:var(--dark); border:1.5px solid var(--border); padding:.62rem 1.5rem; border-radius:10px; font-weight:600; font-size:.9rem; transition:.2s; display:inline-flex; align-items:center; gap:.5rem; }
-.btn-o:hover { border-color:var(--blue); color:var(--blue); background:var(--blue-light); }
-.hero-img { position:relative; }
-.hero-img img { width:100%; border-radius:20px; box-shadow:var(--shadow-lg); display:block; }
-.hpill { position:absolute; background:var(--white); border:1px solid var(--border); border-radius:14px; padding:.7rem 1rem; box-shadow:var(--shadow-md); display:flex; align-items:center; gap:.7rem; }
-.hpill.p1 { bottom:-18px; left:-18px; }
-.hpill.p2 { top:-14px; right:-14px; }
-.pi { width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
-.pi-b{background:var(--blue-light);color:var(--blue);}
-.pi-g{background:#f0fdf4;color:#16a34a;}
-.pn { font-family:'DM Serif Display',serif; font-size:1.2rem; color:var(--dark); line-height:1.1; }
-.pl { font-size:.72rem; color:var(--muted); }
+    body {
+      background: var(--white);
+      color: var(--body);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-/* ── STRIP ── */
-.strip { border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--bg); padding:1.4rem 0; overflow:hidden; }
-.si { display:flex; gap:3rem; align-items:center; animation:marquee 20s linear infinite; white-space:nowrap; }
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.slbl { font-size:.72rem; font-weight:700; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; flex-shrink:0; padding:0 1rem; }
-.cli { font-family:'DM Serif Display',serif; font-size:1rem; color:#94a3b8; flex-shrink:0; }
+    h1,
+    h2,
+    h3 {
+      font-family: 'DM Serif Display', serif;
+    }
 
-/* ── SECTIONS ── */
-.sec { padding:96px 0; }
-.sec.bg { background:var(--bg); }
-.c { max-width:1240px; margin:auto; padding:0 2rem; }
-.sl { font-size:.73rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); display:flex; align-items:center; gap:.5rem; margin-bottom:.7rem; }
-.sl::before { content:''; width:20px; height:2px; background:var(--blue); border-radius:2px; }
-h2.st { font-size:clamp(2rem,3vw,2.7rem); color:var(--dark); line-height:1.1; margin-bottom:.9rem; }
-.sb { color:var(--muted); font-size:.97rem; max-width:500px; line-height:1.75; }
-.gh { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:end; margin-bottom:3.5rem; }
+    a {
+      text-decoration: none;
+    }
 
-/* ── SERVICES ── */
-.sg { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-.sc { background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius); padding:2rem; position:relative; overflow:hidden; transition:.3s; }
-.sc::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--blue); transform:scaleX(0); transform-origin:left; transition:.3s; border-radius:var(--radius) var(--radius) 0 0; }
-.sc:hover { border-color:var(--blue-mid); box-shadow:var(--shadow-lg); transform:translateY(-4px); }
-.sc:hover::before { transform:scaleX(1); }
-.sic { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:1.4rem; }
-.si-b{background:var(--blue-light);color:var(--blue);}
-.si-g{background:#f0fdf4;color:#16a34a;}
-.si-p{background:#fdf4ff;color:#a21caf;}
-.sc h3 { font-family:'DM Sans',sans-serif; font-weight:700; font-size:1.05rem; color:var(--dark); margin-bottom:.55rem; }
-.sc p { color:var(--muted); font-size:.9rem; line-height:1.7; margin:0; }
-.tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:1.1rem; }
-.tag { font-size:.71rem; font-weight:600; padding:.2rem .65rem; border-radius:50px; background:var(--bg); color:var(--muted); border:1px solid var(--border); }
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
 
-/* ── PROCESS ── */
-.pg { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
-.steps { display:flex; flex-direction:column; }
-.step { display:flex; gap:1.4rem; padding:1.3rem; border-radius:14px; transition:.2s; position:relative; }
-.step::after { content:''; position:absolute; left:2.55rem; top:calc(100%); width:1.5px; height:16px; background:var(--border); }
-.step:last-child::after { display:none; }
-.step:hover { background:var(--blue-light); }
-.sn { width:36px; height:36px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem; flex-shrink:0; }
-.step h4 { font-weight:700; font-size:.97rem; color:var(--dark); margin-bottom:.3rem; }
-.step p { color:var(--muted); font-size:.88rem; line-height:1.65; margin:0; }
-.proc-img img { width:100%; border-radius:20px; box-shadow:var(--shadow-lg); display:block; }
+    .fade-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
 
-/* ── PLANS ── */
-.plg { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-.plan { border:1.5px solid var(--border); border-radius:22px; padding:2.2rem; background:var(--white); transition:.3s; position:relative; }
-.plan:hover { box-shadow:var(--shadow-lg); transform:translateY(-4px); }
-.plan.feat { border-color:var(--blue); box-shadow:0 0 0 4px rgba(26,86,219,.07); }
-.flbl { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--blue); color:#fff; font-size:.72rem; font-weight:700; padding:.26rem 1rem; border-radius:50px; white-space:nowrap; }
-.pt { font-size:.71rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem; }
-.t-s{color:var(--muted);} .t-g{color:#d97706;} .t-p{color:#7c3aed;}
-.pp { font-family:'DM Serif Display',serif; font-size:3rem; color:var(--dark); line-height:1; margin:.3rem 0; }
-.pp sup { font-size:1.1rem; vertical-align:top; margin-top:.5rem; display:inline-block; font-family:'DM Sans',sans-serif; font-weight:600; color:var(--muted); }
-.pp sub { font-size:.9rem; color:var(--muted); font-family:'DM Sans',sans-serif; font-weight:400; }
-.pd { color:var(--muted); font-size:.86rem; line-height:1.6; border-bottom:1px solid var(--border); padding-bottom:1.2rem; margin-bottom:1.2rem; }
-.pf { list-style:none; padding:0; margin:0 0 1.7rem; }
-.pf li { display:flex; align-items:center; gap:.6rem; padding:.33rem 0; font-size:.89rem; color:var(--body); }
-.pf li .ok { color:#16a34a; font-size:.85rem; }
-.pf li.off { color:var(--muted); opacity:.4; }
-.btn-pl { width:100%; padding:.68rem; border-radius:10px; font-weight:600; font-size:.9rem; cursor:pointer; transition:.2s; border:1.5px solid var(--border); background:transparent; color:var(--dark); }
-.btn-pl:hover { border-color:var(--blue); color:var(--blue); background:var(--blue-light); }
-.btn-pl.fill { background:var(--blue); color:#fff; border-color:var(--blue); }
-.btn-pl.fill:hover { background:#1749c0; box-shadow:0 4px 16px rgba(26,86,219,.3); }
+    .fade-right {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
 
-/* ── STATS ── */
-.stats-band { background:var(--blue); padding:64px 0; }
-.stg { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; text-align:center; }
-.stn { font-family:'DM Serif Display',serif; font-size:3rem; color:#fff; line-height:1; }
-.stl { font-size:.83rem; color:rgba(255,255,255,.65); margin-top:.4rem; }
+    .fade-up.vis,
+    .fade-left.vis,
+    .fade-right.vis {
+      opacity: 1;
+      transform: none;
+    }
 
-/* ── WHY ── */
-.wg { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
-.wi { display:flex; flex-direction:column; gap:.5rem; }
-.witem { display:flex; gap:.9rem; padding:1rem 1.1rem; border-radius:14px; transition:.2s; }
-.witem:hover { background:var(--blue-light); }
-.wic { width:42px; height:42px; border-radius:10px; background:var(--blue-light); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
-.witem h4 { font-weight:700; font-size:.95rem; color:var(--dark); margin-bottom:.25rem; }
-.witem p { font-size:.86rem; color:var(--muted); line-height:1.6; margin:0; }
-.tcard { background:var(--white); border:1.5px solid var(--border); border-radius:20px; padding:2.2rem; box-shadow:var(--shadow); }
-.qm { font-family:'DM Serif Display',serif; font-size:4rem; color:var(--blue); opacity:.25; line-height:.8; margin-bottom:.5rem; display:block; }
-.qt { font-size:.95rem; color:var(--dark); line-height:1.75; font-style:italic; margin-bottom:1.2rem; }
-.qa { font-size:.8rem; color:var(--muted); font-weight:600; }
+    .d1 {
+      transition-delay: .08s
+    }
 
-/* ── SHOWCASE ── */
-.shg { display:grid; grid-template-columns:2fr 1fr 1fr; gap:1rem; }
-.shi { border-radius:var(--radius); overflow:hidden; position:relative; }
-.shi img { width:100%; height:100%; object-fit:cover; display:block; transition:.45s; }
-.shi:hover img { transform:scale(1.04); }
-.shi.tall { grid-row:span 2; min-height:340px; }
-.shi .cap { position:absolute; inset:0; background:linear-gradient(180deg,transparent 55%,rgba(15,23,42,.6)); display:flex; align-items:flex-end; padding:1.2rem; opacity:0; transition:.3s; }
-.shi:hover .cap { opacity:1; }
-.shi .cap span { font-size:.82rem; font-weight:600; color:#fff; }
+    .d2 {
+      transition-delay: .17s
+    }
 
-/* ── TEAM ── */
-.tg { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-.tmcard { background:var(--white); border:1.5px solid var(--border); border-radius:20px; padding:2.2rem 1.8rem; text-align:center; transition:.3s; }
-.tmcard:hover { border-color:var(--blue-mid); box-shadow:var(--shadow-lg); transform:translateY(-4px); }
+    .d3 {
+      transition-delay: .26s
+    }
 
-/* Avatar */
-.av-wrap { position:relative; width:96px; height:96px; margin:0 auto 1.2rem; }
-.av-fb { width:96px; height:96px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'DM Serif Display',serif; font-size:1.9rem; color:#fff; box-shadow:var(--shadow); }
-.av1{background:linear-gradient(135deg,#1a56db,#0ea5e9);}
-.av2{background:linear-gradient(135deg,#7c3aed,#e879f9);}
-.av3{background:linear-gradient(135deg,#d97706,#fbbf24);}
-.av-badge { position:absolute; bottom:0; right:0; background:var(--white); border:2px solid var(--border); border-radius:50%; width:30px; height:30px; display:flex; align-items:center; justify-content:center; font-size:.85rem; }
-.tmcard h3 { font-family:'DM Sans',sans-serif; font-weight:700; font-size:1rem; color:var(--dark); margin-bottom:.15rem; }
-.tr { font-size:.73rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--blue); margin-bottom:.8rem; display:block; }
-.tmcard p { color:var(--muted); font-size:.86rem; line-height:1.65; margin:0; }
-.tsoc { display:flex; justify-content:center; gap:.4rem; margin-top:1.1rem; }
-.tsoc a { width:34px; height:34px; border-radius:8px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:.82rem; transition:.2s; }
-.tsoc a:hover { background:var(--blue); border-color:var(--blue); color:#fff; }
+    .d4 {
+      transition-delay: .35s
+    }
 
-/* ── CONTACT ── */
-.cg { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; align-items:start; }
-.clist { display:flex; flex-direction:column; gap:.8rem; margin-top:1.8rem; }
-.ci { display:flex; align-items:center; gap:.9rem; padding:1rem 1.1rem; border:1.5px solid var(--border); border-radius:14px; background:var(--white); transition:.2s; }
-.ci:hover { border-color:var(--blue-mid); background:var(--blue-light); }
-.ci-i { width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
-.c-b{background:var(--blue-light);color:var(--blue);}
-.c-g{background:#f0fdf4;color:#16a34a;}
-.c-y{background:#fffbeb;color:#d97706;}
-.c-o{background:#fff7ed;color:#ea580c;}
-.ci h5 { font-weight:700; font-size:.86rem; color:var(--dark); margin-bottom:.1rem; }
-.ci a,.ci p { font-size:.83rem; color:var(--muted); margin:0; }
-.ci a:hover { color:var(--blue); }
-.otag { display:flex; align-items:center; gap:.6rem; margin-top:1.2rem; padding:.8rem 1.1rem; border-radius:12px; background:#f0fdf4; border:1.5px solid #bbf7d0; }
-.odot { width:7px; height:7px; border-radius:50%; background:#22c55e; flex-shrink:0; }
-.otag p { font-size:.82rem; color:#15803d; font-weight:600; margin:0; }
-.cform { background:var(--white); border:1.5px solid var(--border); border-radius:20px; padding:2.2rem; box-shadow:var(--shadow); }
-.cform h3 { font-family:'DM Sans',sans-serif; font-weight:700; font-size:1.05rem; color:var(--dark); margin-bottom:1.4rem; }
-.fr { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-.fg { margin-bottom:1rem; }
-.fg label { display:block; font-size:.82rem; font-weight:600; color:var(--dark); margin-bottom:.4rem; }
-.fg input,.fg select,.fg textarea { width:100%; border:1.5px solid var(--border); border-radius:10px; padding:.68rem .9rem; font-size:.9rem; font-family:'DM Sans',sans-serif; color:var(--dark); background:#fff; outline:none; transition:.2s; }
-.fg input:focus,.fg select:focus,.fg textarea:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(26,86,219,.1); }
-.fg textarea { resize:vertical; min-height:110px; }
-.fg input::placeholder,.fg textarea::placeholder { color:#94a3b8; }
-.btn-sub { width:100%; padding:.75rem; border-radius:10px; background:var(--blue); color:#fff; font-weight:700; font-size:.92rem; border:none; cursor:pointer; transition:.3s; display:flex; align-items:center; justify-content:center; gap:.5rem; }
-.btn-sub:hover { background:#1749c0; box-shadow:0 4px 18px rgba(26,86,219,.3); transform:translateY(-1px); }
+    .d5 {
+      transition-delay: .44s
+    }
 
-/* ── FOOTER ── */
-footer { background:var(--dark); color:rgba(255,255,255,.55); padding:56px 0 24px; }
-.fg2 { display:grid; grid-template-columns:1.8fr 1fr 1fr 1.4fr; gap:3rem; }
-.flogo { font-family:'DM Serif Display',serif; font-size:1.5rem; color:#fff; margin-bottom:.9rem; }
-.flogo em { font-style:italic; color:#60a5fa; }
-.fdesc { font-size:.86rem; line-height:1.7; max-width:280px; }
-.fsoc-row { display:flex; gap:.5rem; margin-top:1.4rem; }
-.fsoc { width:36px; height:36px; border-radius:8px; border:1px solid rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.4); font-size:.85rem; transition:.2s; }
-.fsoc:hover { background:var(--blue); border-color:var(--blue); color:#fff; }
-footer h4 { font-family:'DM Sans',sans-serif; font-weight:700; font-size:.88rem; color:#fff; margin-bottom:1rem; letter-spacing:.03em; }
-.fl { display:block; color:rgba(255,255,255,.4); font-size:.85rem; padding:.22rem 0; transition:.15s; }
-.fl:hover { color:#fff; }
-.fhr { border-color:rgba(255,255,255,.07); margin:2rem 0; }
-.fbot { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:.78rem; color:rgba(255,255,255,.25); }
+    /* ── NAVBAR ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, .96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: .9rem 0;
+      transition: box-shadow .3s;
+    }
 
-/* ── BTT ── */
-.btt { position:fixed; bottom:1.5rem; right:1.5rem; width:44px; height:44px; background:var(--blue); color:#fff; border-radius:12px; border:none; display:flex; align-items:center; justify-content:center; font-size:1rem; opacity:0; pointer-events:none; transition:.3s; cursor:pointer; z-index:999; box-shadow:0 4px 16px rgba(26,86,219,.35); }
-.btt.show { opacity:1; pointer-events:auto; }
-.btt:hover { background:#1749c0; transform:translateY(-2px); }
+    nav.up {
+      box-shadow: var(--shadow);
+    }
 
-/* ── MOBILE ── */
-.mmenu { display:none; position:fixed; top:65px; left:0; right:0; background:#fff; border-bottom:1px solid var(--border); z-index:999; padding:1rem 2rem; box-shadow:var(--shadow-md); }
-.mmenu.open { display:block; }
-.mmenu a { display:block; padding:.7rem 0; font-size:.95rem; font-weight:500; color:var(--body); border-bottom:1px solid var(--border); }
-.mmenu a:last-child { border:none; }
-@media(max-width:900px){
-  .nl,.tel-lnk{display:none;}
-  .hbg{display:block;}
-  .hw{grid-template-columns:1fr;}
-  .hero{padding:80px 0 60px;}
-  .hero-img{display:none;}
-  .sg,.plg,.tg{grid-template-columns:1fr;}
-  .pg,.wg,.cg{grid-template-columns:1fr;}
-  .shg{grid-template-columns:1fr 1fr;}
-  .shi.tall{grid-row:span 1;}
-  .stg{grid-template-columns:repeat(2,1fr);}
-  .fg2{grid-template-columns:1fr 1fr;}
-  .gh{grid-template-columns:1fr;gap:1rem;}
-  .fr{grid-template-columns:1fr;}
-  .sec{padding:72px 0;}
-}
-::-webkit-scrollbar{width:4px;}
-::-webkit-scrollbar-track{background:#f1f5f9;}
-::-webkit-scrollbar-thumb{background:var(--blue);border-radius:4px;}
-</style>
+    .nw {
+      max-width: 1240px;
+      margin: auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.45rem;
+      color: var(--dark);
+    }
+
+    .logo em {
+      font-style: italic;
+      color: var(--blue);
+    }
+
+    .nl {
+      display: flex;
+      gap: .15rem;
+      list-style: none;
+    }
+
+    .nl a {
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 500;
+      padding: .35rem .8rem;
+      border-radius: 8px;
+      transition: .18s;
+    }
+
+    .nl a:hover {
+      color: var(--dark);
+      background: var(--bg);
+    }
+
+    .btn-nav {
+      background: var(--blue);
+      color: #fff;
+      padding: .5rem 1.3rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: .87rem;
+      border: none;
+      cursor: pointer;
+      transition: .2s;
+      white-space: nowrap;
+    }
+
+    .btn-nav:hover {
+      background: #1749c0;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(26, 86, 219, .3);
+    }
+
+    .hbg {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--dark);
+      cursor: pointer;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -300px;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26, 86, 219, .05), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hw {
+      max-width: 1240px;
+      margin: auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--blue-light);
+      border: 1px solid var(--blue-mid);
+      border-radius: 50px;
+      padding: .28rem .9rem;
+      font-size: .76rem;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 1.3rem;
+    }
+
+    .badge span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    h1.ht {
+      font-size: clamp(2.8rem, 4.5vw, 4rem);
+      line-height: 1.08;
+      color: var(--dark);
+      margin-bottom: 1.2rem;
+    }
+
+    h1.ht em {
+      font-style: italic;
+      color: var(--blue);
+    }
+
+    .hsub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 440px;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .hbtns {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-p {
+      background: var(--blue);
+      color: #fff;
+      padding: .65rem 1.6rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: .92rem;
+      border: none;
+      cursor: pointer;
+      transition: .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .btn-p:hover {
+      background: #1749c0;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(26, 86, 219, .28);
+      color: #fff;
+    }
+
+    .btn-o {
+      background: var(--white);
+      color: var(--dark);
+      border: 1.5px solid var(--border);
+      padding: .62rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: .9rem;
+      transition: .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .btn-o:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .hero-img {
+      position: relative;
+    }
+
+    .hero-img img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      display: block;
+    }
+
+    .hpill {
+      position: absolute;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: .7rem 1rem;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+
+    .hpill.p1 {
+      bottom: -18px;
+      left: -18px;
+    }
+
+    .hpill.p2 {
+      top: -14px;
+      right: -14px;
+    }
+
+    .pi {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .pi-b {
+      background: var(--blue-light);
+      color: var(--blue);
+    }
+
+    .pi-g {
+      background: #f0fdf4;
+      color: #16a34a;
+    }
+
+    .pn {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--dark);
+      line-height: 1.1;
+    }
+
+    .pl {
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    /* ── STRIP ── */
+    .strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      padding: 1.4rem 0;
+      overflow: hidden;
+    }
+
+    .si {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      animation: marquee 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    .slbl {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      flex-shrink: 0;
+      padding: 0 1rem;
+    }
+
+    .cli {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: #94a3b8;
+      flex-shrink: 0;
+    }
+
+    /* ── SECTIONS ── */
+    .sec {
+      padding: 96px 0;
+    }
+
+    .sec.bg {
+      background: var(--bg);
+    }
+
+    .c {
+      max-width: 1240px;
+      margin: auto;
+      padding: 0 2rem;
+    }
+
+    .sl {
+      font-size: .73rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: .7rem;
+    }
+
+    .sl::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+    }
+
+    h2.st {
+      font-size: clamp(2rem, 3vw, 2.7rem);
+      color: var(--dark);
+      line-height: 1.1;
+      margin-bottom: .9rem;
+    }
+
+    .sb {
+      color: var(--muted);
+      font-size: .97rem;
+      max-width: 500px;
+      line-height: 1.75;
+    }
+
+    .gh {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── SERVICES ── */
+    .sg {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .sc {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: .3s;
+    }
+
+    .sc::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: .3s;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .sc:hover {
+      border-color: var(--blue-mid);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .sc:hover::before {
+      transform: scaleX(1);
+    }
+
+    .sic {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .si-b {
+      background: var(--blue-light);
+      color: var(--blue);
+    }
+
+    .si-g {
+      background: #f0fdf4;
+      color: #16a34a;
+    }
+
+    .si-p {
+      background: #fdf4ff;
+      color: #a21caf;
+    }
+
+    .sc h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: .55rem;
+    }
+
+    .sc p {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: 1.1rem;
+    }
+
+    .tag {
+      font-size: .71rem;
+      font-weight: 600;
+      padding: .2rem .65rem;
+      border-radius: 50px;
+      background: var(--bg);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    /* ── PROCESS ── */
+    .pg {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step {
+      display: flex;
+      gap: 1.4rem;
+      padding: 1.3rem;
+      border-radius: 14px;
+      transition: .2s;
+      position: relative;
+    }
+
+    .step::after {
+      content: '';
+      position: absolute;
+      left: 2.55rem;
+      top: calc(100%);
+      width: 1.5px;
+      height: 16px;
+      background: var(--border);
+    }
+
+    .step:last-child::after {
+      display: none;
+    }
+
+    .step:hover {
+      background: var(--blue-light);
+    }
+
+    .sn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: .85rem;
+      flex-shrink: 0;
+    }
+
+    .step h4 {
+      font-weight: 700;
+      font-size: .97rem;
+      color: var(--dark);
+      margin-bottom: .3rem;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .proc-img img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      display: block;
+    }
+
+    /* ── PLANS ── */
+    .plg {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .plan {
+      border: 1.5px solid var(--border);
+      border-radius: 22px;
+      padding: 2.2rem;
+      background: var(--white);
+      transition: .3s;
+      position: relative;
+    }
+
+    .plan:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .plan.feat {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(26, 86, 219, .07);
+    }
+
+    .flbl {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--blue);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      padding: .26rem 1rem;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+
+    .pt {
+      font-size: .71rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+
+    .t-s {
+      color: var(--muted);
+    }
+
+    .t-g {
+      color: #d97706;
+    }
+
+    .t-p {
+      color: #7c3aed;
+    }
+
+    .pp {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem;
+      color: var(--dark);
+      line-height: 1;
+      margin: .3rem 0;
+    }
+
+    .pp sup {
+      font-size: 1.1rem;
+      vertical-align: top;
+      margin-top: .5rem;
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .pp sub {
+      font-size: .9rem;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+    }
+
+    .pd {
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .pf {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.7rem;
+    }
+
+    .pf li {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .33rem 0;
+      font-size: .89rem;
+      color: var(--body);
+    }
+
+    .pf li .ok {
+      color: #16a34a;
+      font-size: .85rem;
+    }
+
+    .pf li.off {
+      color: var(--muted);
+      opacity: .4;
+    }
+
+    .btn-pl {
+      width: 100%;
+      padding: .68rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: .2s;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--dark);
+    }
+
+    .btn-pl:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .btn-pl.fill {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    .btn-pl.fill:hover {
+      background: #1749c0;
+      box-shadow: 0 4px 16px rgba(26, 86, 219, .3);
+    }
+
+    /* ── STATS ── */
+    .stats-band {
+      background: var(--blue);
+      padding: 64px 0;
+    }
+
+    .stg {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stn {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .stl {
+      font-size: .83rem;
+      color: rgba(255, 255, 255, .65);
+      margin-top: .4rem;
+    }
+
+    /* ── WHY ── */
+    .wg {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .wi {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .witem {
+      display: flex;
+      gap: .9rem;
+      padding: 1rem 1.1rem;
+      border-radius: 14px;
+      transition: .2s;
+    }
+
+    .witem:hover {
+      background: var(--blue-light);
+    }
+
+    .wic {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--blue-light);
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .witem h4 {
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--dark);
+      margin-bottom: .25rem;
+    }
+
+    .witem p {
+      font-size: .86rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .tcard {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .qm {
+      font-family: 'DM Serif Display', serif;
+      font-size: 4rem;
+      color: var(--blue);
+      opacity: .25;
+      line-height: .8;
+      margin-bottom: .5rem;
+      display: block;
+    }
+
+    .qt {
+      font-size: .95rem;
+      color: var(--dark);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+
+    .qa {
+      font-size: .8rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* ── SHOWCASE ── */
+    .shg {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .shi {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .shi img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: .45s;
+    }
+
+    .shi:hover img {
+      transform: scale(1.04);
+    }
+
+    .shi.tall {
+      grid-row: span 2;
+      min-height: 340px;
+    }
+
+    .shi .cap {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(15, 23, 42, .6));
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+      opacity: 0;
+      transition: .3s;
+    }
+
+    .shi:hover .cap {
+      opacity: 1;
+    }
+
+    .shi .cap span {
+      font-size: .82rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* ── TEAM ── */
+    .tg {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .tmcard {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 2.2rem 1.8rem;
+      text-align: center;
+      transition: .3s;
+    }
+
+    .tmcard:hover {
+      border-color: var(--blue-mid);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    /* Avatar */
+    .av-wrap {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 1.2rem;
+    }
+
+    .av-fb {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.9rem;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .av1 {
+      background: linear-gradient(135deg, #1a56db, #0ea5e9);
+    }
+
+    .av2 {
+      background: linear-gradient(135deg, #7c3aed, #e879f9);
+    }
+
+    .av3 {
+      background: linear-gradient(135deg, #d97706, #fbbf24);
+    }
+
+    .av-badge {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+    }
+
+    .tmcard h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: .15rem;
+    }
+
+    .tr {
+      font-size: .73rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .8rem;
+      display: block;
+    }
+
+    .tmcard p {
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .tsoc {
+      display: flex;
+      justify-content: center;
+      gap: .4rem;
+      margin-top: 1.1rem;
+    }
+
+    .tsoc a {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: .82rem;
+      transition: .2s;
+    }
+
+    .tsoc a:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    /* ── CONTACT ── */
+    .cg {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .clist {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+      margin-top: 1.8rem;
+    }
+
+    .ci {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      padding: 1rem 1.1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      background: var(--white);
+      transition: .2s;
+    }
+
+    .ci:hover {
+      border-color: var(--blue-mid);
+      background: var(--blue-light);
+    }
+
+    .ci-i {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .c-b {
+      background: var(--blue-light);
+      color: var(--blue);
+    }
+
+    .c-g {
+      background: #f0fdf4;
+      color: #16a34a;
+    }
+
+    .c-y {
+      background: #fffbeb;
+      color: #d97706;
+    }
+
+    .c-o {
+      background: #fff7ed;
+      color: #ea580c;
+    }
+
+    .ci h5 {
+      font-weight: 700;
+      font-size: .86rem;
+      color: var(--dark);
+      margin-bottom: .1rem;
+    }
+
+    .ci a,
+    .ci p {
+      font-size: .83rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .ci a:hover {
+      color: var(--blue);
+    }
+
+    .otag {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-top: 1.2rem;
+      padding: .8rem 1.1rem;
+      border-radius: 12px;
+      background: #f0fdf4;
+      border: 1.5px solid #bbf7d0;
+    }
+
+    .odot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      flex-shrink: 0;
+    }
+
+    .otag p {
+      font-size: .82rem;
+      color: #15803d;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .cform {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .cform h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 1.4rem;
+    }
+
+    .fr {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .fg {
+      margin-bottom: 1rem;
+    }
+
+    .fg label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: .4rem;
+    }
+
+    .fg input,
+    .fg select,
+    .fg textarea {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: .68rem .9rem;
+      font-size: .9rem;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--dark);
+      background: #fff;
+      outline: none;
+      transition: .2s;
+    }
+
+    .fg input:focus,
+    .fg select:focus,
+    .fg textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26, 86, 219, .1);
+    }
+
+    .fg textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .fg input::placeholder,
+    .fg textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    .btn-sub {
+      width: 100%;
+      padding: .75rem;
+      border-radius: 10px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 700;
+      font-size: .92rem;
+      border: none;
+      cursor: pointer;
+      transition: .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    .btn-sub:hover {
+      background: #1749c0;
+      box-shadow: 0 4px 18px rgba(26, 86, 219, .3);
+      transform: translateY(-1px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, .55);
+      padding: 56px 0 24px;
+    }
+
+    .fg2 {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1.4fr;
+      gap: 3rem;
+    }
+
+    .flogo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: .9rem;
+    }
+
+    .flogo em {
+      font-style: italic;
+      color: #60a5fa;
+    }
+
+    .fdesc {
+      font-size: .86rem;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .fsoc-row {
+      display: flex;
+      gap: .5rem;
+      margin-top: 1.4rem;
+    }
+
+    .fsoc {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, .1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, .4);
+      font-size: .85rem;
+      transition: .2s;
+    }
+
+    .fsoc:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    footer h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: .88rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      letter-spacing: .03em;
+    }
+
+    .fl {
+      display: block;
+      color: rgba(255, 255, 255, .4);
+      font-size: .85rem;
+      padding: .22rem 0;
+      transition: .15s;
+    }
+
+    .fl:hover {
+      color: #fff;
+    }
+
+    .fhr {
+      border-color: rgba(255, 255, 255, .07);
+      margin: 2rem 0;
+    }
+
+    .fbot {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: .78rem;
+      color: rgba(255, 255, 255, .25);
+    }
+
+    /* ── BTT ── */
+    .btt {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 44px;
+      height: 44px;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 12px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: .3s;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 16px rgba(26, 86, 219, .35);
+    }
+
+    .btt.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .btt:hover {
+      background: #1749c0;
+      transform: translateY(-2px);
+    }
+
+    /* ── MOBILE ── */
+    .mmenu {
+      display: none;
+      position: fixed;
+      top: 65px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      padding: 1rem 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .mmenu.open {
+      display: block;
+    }
+
+    .mmenu a {
+      display: block;
+      padding: .7rem 0;
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--body);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mmenu a:last-child {
+      border: none;
+    }
+
+    @media(max-width:900px) {
+
+      .nl,
+      .tel-lnk {
+        display: none;
+      }
+
+      .hbg {
+        display: block;
+      }
+
+      .hw {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 80px 0 60px;
+      }
+
+      .hero-img {
+        display: none;
+      }
+
+      .sg,
+      .plg,
+      .tg {
+        grid-template-columns: 1fr;
+      }
+
+      .pg,
+      .wg,
+      .cg {
+        grid-template-columns: 1fr;
+      }
+
+      .shg {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .shi.tall {
+        grid-row: span 1;
+      }
+
+      .stg {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .fg2 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gh {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .fr {
+        grid-template-columns: 1fr;
+      }
+
+      .sec {
+        padding: 72px 0;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--blue);
+      border-radius: 4px;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav id="nav">
-  <div class="nw">
-    <div class="logo">tec<em>H</em>Master</div>
-    <ul class="nl">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#plans">Pricing</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div style="display:flex;align-items:center;gap:1rem">
-      <button class="btn-nav" onclick="location.href='#contact'">Get a Quote</button>
-      <button class="hbg" id="mb"><i class="bi bi-list"></i></button>
+  <!-- NAVBAR -->
+  <nav id="nav">
+    <div class="nw">
+      <a href="#home" class="logo" style="display: flex; align-items: center;"><img src="techmaster logo.jpg"
+          alt="tecHMaster Studio" style="height: 65px; mix-blend-mode: multiply;"></a>
+      <ul class="nl">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:1rem">
+        <button class="btn-nav" onclick="location.href='#contact'">Get a Quote</button>
+        <button class="hbg" id="mb"><i class="bi bi-list"></i></button>
+      </div>
     </div>
+  </nav>
+  <div class="mmenu" id="mm">
+    <a href="#services">Services</a>
+    <a href="#process">Process</a><a href="#team">Team</a><a href="#contact">Contact</a>
   </div>
-</nav>
-<div class="mmenu" id="mm">
-  <a href="#services">Services</a><a href="#plans">Pricing</a>
-  <a href="#process">Process</a><a href="#team">Team</a><a href="#contact">Contact</a>
-</div>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hw">
-    <div>
-      <div class="badge fade-up"><span></span> Digital Growth Agency · Rajkot, India</div>
-      <h1 class="ht fade-up d1">We Build Digital<br><em>Masterpieces</em><br>That Convert</h1>
-      <p class="hsub fade-up d2">From pixel-perfect websites to strategic social media management — tecHMaster crafts digital experiences that build trust, attract clients, and grow your business.</p>
-      <div class="hbtns fade-up d3">
-        <a href="#contact" class="btn-p"><i class="bi bi-rocket-takeoff-fill"></i> Start Your Project</a>
-        <a href="#plans" class="btn-o">View Pricing <i class="bi bi-arrow-right"></i></a>
-      </div>
-    </div>
-    <div class="hero-img fade-right d2">
-      <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&auto=format&q=80" alt="Digital Agency Work"/>
-      <div class="hpill p1">
-        <div class="pi pi-b"><i class="bi bi-graph-up-arrow"></i></div>
-        <div><div class="pn">+124%</div><div class="pl">Monthly Reach</div></div>
-      </div>
-      <div class="hpill p2">
-        <div class="pi pi-g"><i class="bi bi-check-circle-fill"></i></div>
-        <div><div class="pn">100%</div><div class="pl">Client Satisfaction</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STRIP -->
-<div class="strip">
-  <div class="si">
-    <span class="slbl">Trusted by</span>
-    <span class="cli">Nexora</span><span class="cli">Vortex Co.</span><span class="cli">Skyline Labs</span>
-    <span class="cli">Prism Media</span><span class="cli">Kratos</span><span class="cli">Zenpay</span>
-    <span class="cli">Orbis Tech</span><span class="cli">Helios</span>
-    <span class="slbl">Trusted by</span>
-    <span class="cli">Nexora</span><span class="cli">Vortex Co.</span><span class="cli">Skyline Labs</span>
-    <span class="cli">Prism Media</span><span class="cli">Kratos</span><span class="cli">Zenpay</span>
-    <span class="cli">Orbis Tech</span><span class="cli">Helios</span>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section class="sec" id="services">
-  <div class="c">
-    <div class="gh">
-      <div class="fade-up">
-        <div class="sl">What We Do</div>
-        <h2 class="st">Services Built for<br>Real Business Growth</h2>
-      </div>
-      <p class="sb fade-up d1">We combine design expertise, technical skill, and social media knowledge to deliver a comprehensive digital presence that actually works.</p>
-    </div>
-    <div class="sg">
-      <div class="sc fade-up d1">
-        <div class="sic si-b"><i class="bi bi-palette2"></i></div>
-        <h3>Web Designing</h3>
-        <p>Visually stunning, conversion-focused UI/UX design that makes your brand unforgettable. Every layout crafted for maximum impact and user delight.</p>
-        <div class="tags"><span class="tag">UI/UX</span><span class="tag">Figma</span><span class="tag">Responsive</span><span class="tag">Prototyping</span></div>
-      </div>
-      <div class="sc fade-up d2">
-        <div class="sic si-g"><i class="bi bi-code-slash"></i></div>
-        <h3>Web Development</h3>
-        <p>Fast, secure, and scalable websites and web apps. From landing pages to full-stack platforms — built with clean code and modern technology.</p>
-        <div class="tags"><span class="tag">HTML/CSS/JS</span><span class="tag">React</span><span class="tag">WordPress</span><span class="tag">Full Stack</span></div>
-      </div>
-      <div class="sc fade-up d3">
-        <div class="sic si-p"><i class="bi bi-instagram"></i></div>
-        <h3>Social Media Handling</h3>
-        <p>Strategic content creation, scheduling, and community management that grows your followers, increases engagement, and drives real results.</p>
-        <div class="tags"><span class="tag">Instagram</span><span class="tag">Reels</span><span class="tag">Graphic Design</span><span class="tag">Strategy</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SHOWCASE -->
-<section class="sec bg">
-  <div class="c">
-    <div class="fade-up" style="margin-bottom:2.5rem">
-      <div class="sl">Our Work</div>
-      <h2 class="st">Recent Projects</h2>
-    </div>
-    <div class="shg">
-      <div class="shi tall fade-left">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&auto=format&q=80" alt="Analytics" style="height:100%;min-height:340px"/>
-        <div class="cap"><span>Analytics Dashboard</span></div>
-      </div>
-      <div class="shi fade-up d1" style="min-height:160px">
-        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500&auto=format&q=80" alt="Social" style="height:100%;min-height:160px"/>
-        <div class="cap"><span>Social Media Strategy</span></div>
-      </div>
-      <div class="shi fade-up d2" style="min-height:160px">
-        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&auto=format&q=80" alt="Branding" style="height:100%;min-height:160px"/>
-        <div class="cap"><span>Brand Identity</span></div>
-      </div>
-      <div class="shi fade-up d3" style="min-height:160px">
-        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=500&auto=format&q=80" alt="Design" style="height:100%;min-height:160px"/>
-        <div class="cap"><span>Web Design</span></div>
-      </div>
-      <div class="shi fade-right d1" style="min-height:160px">
-        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&auto=format&q=80" alt="Team" style="height:100%;min-height:160px"/>
-        <div class="cap"><span>Team Collaboration</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="sec" id="process">
-  <div class="c">
-    <div class="pg">
-      <div class="fade-left">
-        <div class="sl">How We Work</div>
-        <h2 class="st">Our Simple 4-Step Process</h2>
-        <p class="sb" style="margin-bottom:2.2rem">A proven workflow that keeps you informed at every stage and delivers outstanding results on time, every time.</p>
-        <a href="#contact" class="btn-p" style="display:inline-flex">Start a Project <i class="bi bi-arrow-right"></i></a>
-      </div>
-      <div class="steps fade-right">
-        <div class="step"><div class="sn">1</div><div><h4>Discovery & Brief</h4><p>We study your business, goals, target audience, and competitors to craft a winning strategy tailored to you.</p></div></div>
-        <div class="step"><div class="sn">2</div><div><h4>Design & Planning</h4><p>Our design team creates mockups and content plans, getting your sign-off before any development begins.</p></div></div>
-        <div class="step"><div class="sn">3</div><div><h4>Development & Creation</h4><p>We build your website or create social media content with precision, speed, and rigorous quality control.</p></div></div>
-        <div class="step"><div class="sn">4</div><div><h4>Launch & Ongoing Support</h4><p>We go live, monitor performance, and provide dedicated support to ensure continued growth.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PLANS -->
-<section class="sec bg" id="plans">
-  <div class="c">
-    <div class="fade-up" style="text-align:center;max-width:540px;margin:0 auto 3.5rem">
-      <div class="sl" style="justify-content:center">Social Media Plans</div>
-      <h2 class="st">Simple, Transparent Pricing</h2>
-      <p class="sb" style="margin:0 auto">Flexible packages with no hidden fees. Consistent quality every month.</p>
-    </div>
-    <div class="plg">
-      <div class="plan fade-up d1">
-        <div class="pt t-s">⬡ Silver Plan</div>
-        <div class="pp"><sup>₹</sup>499<sub>/mo</sub></div>
-        <p class="pd">Ideal for new businesses building a consistent, professional social media presence.</p>
-        <ul class="pf">
-          <li><i class="bi bi-check-circle-fill ok"></i> 5 Posts per month</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Custom graphic design</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Caption writing</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Hashtag strategy</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Instagram scheduling</li>
-          <li class="off"><i class="bi bi-x-circle"></i> Reels not included</li>
-          <li class="off"><i class="bi bi-x-circle"></i> Analytics report</li>
-        </ul>
-        <button class="btn-pl" onclick="location.href='#contact'">Choose Silver</button>
-      </div>
-      <div class="plan feat fade-up d2">
-        <div class="flbl">⭐ Most Popular</div>
-        <div class="pt t-g">★ Gold Plan</div>
-        <div class="pp"><sup>₹</sup>799<sub>/mo</sub></div>
-        <p class="pd">For growing brands that want more reach with powerful reels and additional posts.</p>
-        <ul class="pf">
-          <li><i class="bi bi-check-circle-fill ok"></i> 7 Posts per month</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> 1 Reel per month</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Premium graphic design</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Caption + hashtag strategy</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Priority scheduling</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Engagement monitoring</li>
-          <li class="off"><i class="bi bi-x-circle"></i> Full analytics report</li>
-        </ul>
-        <button class="btn-pl fill" onclick="location.href='#contact'">Choose Gold</button>
-      </div>
-      <div class="plan fade-up d3">
-        <div class="pt t-p">💎 Premium Plan</div>
-        <div class="pp"><sup>₹</sup>1200<sub>/mo</sub></div>
-        <p class="pd">For businesses serious about dominating social media and achieving maximum brand growth.</p>
-        <ul class="pf">
-          <li><i class="bi bi-check-circle-fill ok"></i> 10 Posts per month</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> 2 Reels per month</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Premium graphic design</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Full caption strategy</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Trending hashtags</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Community engagement</li>
-          <li><i class="bi bi-check-circle-fill ok"></i> Monthly analytics report</li>
-        </ul>
-        <button class="btn-pl" style="border-color:#ddd6fe;color:#7c3aed" onclick="location.href='#contact'">Choose Premium</button>
-      </div>
-    </div>
-    <div class="fade-up" style="margin-top:1.8rem;text-align:center">
-      <p style="font-size:.85rem;color:var(--muted)">All plans include Instagram management. Need something custom? <a href="#contact" style="color:var(--blue);font-weight:600">Contact us</a> for a tailored package.</p>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<div class="stats-band fade-up">
-  <div class="c">
-    <div class="stg">
-      <div style="text-align:center"><div class="stn" data-t="50">0+</div><div class="stl">Projects Delivered</div></div>
-      <div style="text-align:center"><div class="stn" data-t="30">0+</div><div class="stl">Social Accounts Managed</div></div>
-      <div style="text-align:center"><div class="stn" data-t="2">0+</div><div class="stl">Years of Experience</div></div>
-      <div style="text-align:center"><div class="stn" data-t="100" data-s="%">0%</div><div class="stl">Client Satisfaction</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- WHY -->
-<section class="sec" id="why">
-  <div class="c">
-    <div class="wg">
-      <div class="fade-left">
-        <div class="sl">Why Choose Us</div>
-        <h2 class="st">A Partner You Can<br>Actually Trust</h2>
-        <p class="sb" style="margin-bottom:2rem">We're a small, dedicated team that genuinely cares about your brand's success — every project gets our full attention.</p>
-        <div class="tcard">
-          <span class="qm">"</span>
-          <p class="qt">"tecHMaster transformed our online presence completely. Our inquiries doubled within 2 months of the new website launch."</p>
-          <p class="qa">— Client, Rajkot Retail Brand</p>
-        </div>
-      </div>
-      <div class="wi fade-right">
-        <div class="witem"><div class="wic"><i class="bi bi-lightning-charge-fill"></i></div><div><h4>Fast Turnaround</h4><p>We deliver on time, every time. Quick execution without compromising quality.</p></div></div>
-        <div class="witem"><div class="wic"><i class="bi bi-shield-check-fill"></i></div><div><h4>Trusted & Transparent</h4><p>Clear communication, honest pricing, and regular updates throughout every project.</p></div></div>
-        <div class="witem"><div class="wic"><i class="bi bi-graph-up-arrow"></i></div><div><h4>Results Focused</h4><p>We build for conversions, engagement, and measurable growth — not just looks.</p></div></div>
-        <div class="witem"><div class="wic"><i class="bi bi-headset"></i></div><div><h4>Dedicated Support</h4><p>You'll always have someone to talk to — before, during, and after every project.</p></div></div>
-        <div class="witem"><div class="wic"><i class="bi bi-geo-alt-fill"></i></div><div><h4>Local Expertise</h4><p>Based in Rajkot — we understand Indian markets, businesses, and audiences firsthand.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section class="sec bg" id="team">
-  <div class="c">
-    <div class="fade-up" style="text-align:center; max-width:540px; margin:0 auto 3.5rem">
-      <div class="sl" style="justify-content:center">Meet The Team</div>
-      <h2 class="st">The People Behind tecHMaster</h2>
-      <p class="sb" style="margin:0 auto">A passionate team of digital experts committed to delivering results that matter for your business.</p>
-    </div>
-
-    <div class="tg">
-      <!-- Dhruvrajsinh Sarvaiya - CEO & Founder -->
-      <div class="tmcard fade-up d1">
-        <div class="av-wrap">
-          <div class="av-fb av1">
-            <img 
-              src="https://img.freepik.com/free-psd/3d-illustration-businessman-with-laptop_23-2149436203.jpg" 
-              alt="Dhruvrajsinh Sarvaiya" 
-              style="width:100%; height:100%; border-radius:50%; object-fit:cover;"
-            >
-          </div>
-          <div class="av-badge">👑</div> <!-- added back for consistency -->
-        </div>
-        <h3>Dhruvrajsinh Sarvaiya</h3>
-        <span class="tr">CEO & Founder</span>
-        <p>Visionary leader driving tecHMaster's strategic direction. Passionate about building digital products that create real business impact for clients.</p>
-        <div class="tsoc">
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-linkedin"></i></a>
-          <a href="#"><i class="bi bi-whatsapp"></i></a>
-        </div>
-      </div>
-
-      <!-- Harpalsinh Sarvaiya - Co-Founder -->
-      <div class="tmcard fade-up d2">
-        <div class="av-wrap">
-          <div class="av-fb av2">
-            <img 
-              src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671138.jpg" 
-              alt="Harpalsinh Sarvaiya" 
-              style="width:100%; height:100%; border-radius:50%; object-fit:cover;"
-            >
-          </div>
-          <div class="av-badge">🤝</div>
-        </div>
-        <h3>Harpalsinh Sarvaiya</h3>
-        <span class="tr" style="color:#7c3aed">Co-Founder</span>
-        <p>Strategic thinker and business development expert who ensures every client receives exceptional value and measurable results from our work.</p>
-        <div class="tsoc">
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-linkedin"></i></a>
-          <a href="#"><i class="bi bi-whatsapp"></i></a>
-        </div>
-      </div>
-
-      <!-- Yash Sangani - Design Master -->
-      <div class="tmcard fade-up d3">
-        <div class="av-wrap">
-          <div class="av-fb av3">
-            <img 
-              src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436198.jpg" 
-              alt="Yash Sangani" 
-              style="width:100%; height:100%; border-radius:50%; object-fit:cover;"
-            >
-          </div>
-          <div class="av-badge">🎨</div>
-        </div>
-        <h3>Yash Sangani</h3>
-        <span class="tr" style="color:#d97706">Design Master</span>
-        <p>Creative genius behind every visual element at tecHMaster. Transforms ideas into stunning designs that captivate audiences and elevate brands.</p>
-        <div class="tsoc">
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-behance"></i></a>
-          <a href="#"><i class="bi bi-dribbble"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="sec" id="contact">
-  <div class="c">
-    <div class="fade-up" style="text-align:center;max-width:540px;margin:0 auto 3.5rem">
-      <div class="sl" style="justify-content:center">Get In Touch</div>
-      <h2 class="st">Let's Work Together</h2>
-      <p class="sb" style="margin:0 auto">Ready to grow your business online? Tell us about your project and we'll respond within 24 hours.</p>
-    </div>
-    <div class="cg">
-      <div class="fade-left">
-        <p style="font-weight:700;font-size:1rem;color:var(--dark);margin-bottom:0">Contact Details</p>
-        <div class="clist">
-          <a href="mailto:hello@techmaster.in" class="ci" style="text-decoration:none">
-            <div class="ci-i c-b"><i class="bi bi-envelope-fill"></i></div>
-            <div><h5>Email Us</h5><span style="font-size:.83rem;color:var(--muted)">hello@techmaster.in</span></div>
-          </a>
-          <a href="https://wa.me/919999999999" class="ci" style="text-decoration:none" target="_blank">
-            <div class="ci-i c-g"><i class="bi bi-whatsapp"></i></div>
-            <div><h5>WhatsApp</h5><span style="font-size:.83rem;color:var(--muted)">+91 99999 99999</span></div>
-          </a>
-          <a href="https://instagram.com/techmaster" class="ci" style="text-decoration:none" target="_blank">
-            <div class="ci-i c-y"><i class="bi bi-instagram"></i></div>
-            <div><h5>Instagram</h5><span style="font-size:.83rem;color:var(--muted)">@techmaster</span></div>
-          </a>
-          <div class="ci">
-            <div class="ci-i c-o"><i class="bi bi-geo-alt-fill"></i></div>
-            <div><h5>Location</h5><p>Rajkot, Gujarat, India</p></div>
-          </div>
-        </div>
-        <div class="otag"><div class="odot"></div><p>We typically respond within 2–4 hours on business days.</p></div>
-      </div>
-      <div class="fade-right">
-        <div class="cform">
-          <h3>Send Us a Message</h3>
-          <div class="fr">
-            <div class="fg"><label>Your Name</label><input type="text" placeholder="Rahul Shah"/></div>
-            <div class="fg"><label>Email Address</label><input type="email" placeholder="rahul@email.com"/></div>
-          </div>
-          <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210"/></div>
-          <div class="fg">
-            <label>Service Interested In</label>
-            <select>
-              <option value="">Select a service...</option>
-              <option>Web Designing</option>
-              <option>Web Development</option>
-              <option>Social Media – Silver (₹499/mo)</option>
-              <option>Social Media – Gold (₹799/mo)</option>
-              <option>Social Media – Premium (₹1200/mo)</option>
-              <option>Multiple Services / Custom Package</option>
-            </select>
-          </div>
-          <div class="fg"><label>Your Message</label><textarea placeholder="Tell us about your project, goals, or questions..."></textarea></div>
-          <button class="btn-sub" id="sendBtn" onclick="submitForm(this)">
-            <i class="bi bi-send-fill"></i> Send Message
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="c">
-    <div class="fg2">
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hw">
       <div>
-        <div class="flogo">tec<em>H</em>Master</div>
-        <p class="fdesc">A full-service digital agency crafting websites, brands, and social media strategies that drive real business growth from Rajkot, India.</p>
-        <div class="fsoc-row">
-          <a href="#" class="fsoc"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="fsoc"><i class="bi bi-linkedin"></i></a>
-          <a href="#" class="fsoc"><i class="bi bi-whatsapp"></i></a>
-          <a href="mailto:hello@techmaster.in" class="fsoc"><i class="bi bi-envelope-fill"></i></a>
+        <div class="badge fade-up"><span></span> Digital Growth Agency · Rajkot, India</div>
+        <h1 class="ht fade-up d1">We Build Digital<br><em>Masterpieces</em><br>That Convert</h1>
+        <p class="hsub fade-up d2">From pixel-perfect websites to scalable mobile applications — tecHMaster crafts
+          digital experiences that build trust, attract clients, and grow your business.</p>
+        <div class="hbtns fade-up d3">
+          <a href="#contact" class="btn-p"><i class="bi bi-rocket-takeoff-fill"></i> Start Your Project</a>
         </div>
       </div>
-      <div>
-        <h4>Company</h4>
-        <a href="#home" class="fl">Home</a>
-        <a href="#team" class="fl">Our Team</a>
-        <a href="#process" class="fl">Process</a>
-        <a href="#contact" class="fl">Contact</a>
-      </div>
-      <div>
-        <h4>Services</h4>
-        <a href="#services" class="fl">Web Designing</a>
-        <a href="#services" class="fl">Web Development</a>
-        <a href="#plans" class="fl">Social Media</a>
-        <a href="#plans" class="fl">Pricing Plans</a>
-      </div>
-      <div>
-        <h4>Quick Contact</h4>
-        <a href="mailto:hello@techmaster.in" class="fl"><i class="bi bi-envelope" style="color:#60a5fa;margin-right:.4rem"></i>hello@techmaster.in</a>
-        <a href="https://wa.me/919999999999" class="fl"><i class="bi bi-whatsapp" style="color:#22c55e;margin-right:.4rem"></i>+91 99999 99999</a>
-        <a href="https://instagram.com/techmaster" class="fl"><i class="bi bi-instagram" style="color:#e879f9;margin-right:.4rem"></i>@techmaster</a>
-        <a href="#" class="fl"><i class="bi bi-geo-alt-fill" style="color:#fbbf24;margin-right:.4rem"></i>Rajkot, Gujarat, India</a>
+      <div class="hero-img fade-right d2">
+        <img src="hero.png" alt="tecHMaster Hero" />
+        <div class="hpill p1">
+          <div class="pi pi-b"><i class="bi bi-lightning-charge-fill"></i></div>
+          <div>
+            <div class="pn">Fast</div>
+            <div class="pl">Delivery Speeds</div>
+          </div>
+        </div>
+        <div class="hpill p2">
+          <div class="pi pi-g"><i class="bi bi-code-slash"></i></div>
+          <div>
+            <div class="pn">Modern</div>
+            <div class="pl">Tech Stack</div>
+          </div>
+        </div>
       </div>
     </div>
-    <hr class="fhr"/>
-    <div class="fbot">
-      <p>© 2025 tecHMaster. All rights reserved.</p>
-      <p>Designed with ♥ by Team tecHMaster · Rajkot</p>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="si">
+      <span class="slbl">Tech Stack</span>
+      <span class="cli">PHP</span><span class="cli">Java Script</span><span class="cli">Python</span>
+      <span class="cli">Java</span><span class="cli">Html</span><span class="cli">Bootstrap</span>
+      <span class="cli">Php</span><span class="cli">Laravel</span>
+      <span class="slbl">Services</span>
+      <span class="cli">Application developmant</span><span class="cli">Mobile App</span><span class="cli">Social Media
+        Hendeling</span>
+      <span class="cli">website developmant</span><span class="cli">Kratos</span><span class="cli">ERP Softwares</span>
+      <span class="cli">SoftwareDevelopmant</span><span class="cli">System Design</span>
     </div>
   </div>
-</footer>
 
-<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <i class="bi bi-arrow-up"></i>
-</button>
+  <!-- SERVICES -->
+  <section class="sec" id="services">
+    <div class="c">
+      <div class="gh">
+        <div class="fade-up">
+          <div class="sl">What We Do</div>
+          <h2 class="st">Services Built for<br>Real Business Growth</h2>
+        </div>
+        <p class="sb fade-up d1">We combine design expertise, technical skill, and cutting-edge software architecture to
+          deliver a
+          comprehensive digital presence that scales with you.</p>
+      </div>
+      <div class="sg">
+        <div class="sc fade-up d1">
+          <div class="sic si-b"><i class="bi bi-palette2"></i></div>
+          <h3>Web Designing</h3>
+          <p>Visually stunning, conversion-focused UI/UX design that makes your brand unforgettable. Every layout
+            crafted for maximum impact and user delight.</p>
+          <div class="tags"><span class="tag">UI/UX</span><span class="tag">Figma</span><span
+              class="tag">Responsive</span><span class="tag">Prototyping</span></div>
+        </div>
+        <div class="sc fade-up d2">
+          <div class="sic si-g"><i class="bi bi-code-slash"></i></div>
+          <h3>Web Development</h3>
+          <p>Fast, secure, and scalable websites and web apps. From landing pages to full-stack platforms — built with
+            clean code and modern technology.</p>
+          <div class="tags"><span class="tag">HTML/CSS/JS</span><span class="tag">React</span><span
+              class="tag">WordPress</span><span class="tag">Full Stack</span></div>
+        </div>
+        <div class="sc fade-up d3">
+          <div class="sic si-p"><i class="bi bi-phone"></i></div>
+          <h3>Mobile App Development</h3>
+          <p>Native and cross-platform mobile applications designed to provide seamless user experiences and powerful
+            functionality on iOS and Android.</p>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">React Native</span><span class="tag">iOS
+              & Android</span><span class="tag">Swift</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-// Scroll reveal
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el => io.observe(el));
+  <!-- OUR APPROACH -->
+  <section class="sec bg" id="approach">
+    <div class="c">
+      <div class="fade-up" style="margin-bottom:2.5rem; text-align:center;">
+        <div class="sl" style="justify-content:center;">Our Approach</div>
+        <h2 class="st">Why Choose tecHMaster</h2>
+        <p class="sb" style="margin:0 auto;">We don't just write code; we build strategic partnerships to ensure your
+          application succeeds from day one.</p>
+      </div>
 
-// Navbar scroll
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('up', window.scrollY > 30);
-  document.getElementById('btt').classList.toggle('show', window.scrollY > 500);
-}, { passive: true });
+      <div class="sg">
+        <div class="sc fade-up d1">
+          <div class="sic si-p"><i class="bi bi-arrow-repeat"></i></div>
+          <h3>Agile Methodology</h3>
+          <p>We build iteratively, ensuring you see progress fast and your feedback is integrated immediately into each
+            sprint.</p>
+        </div>
 
-// Mobile menu
-const mb = document.getElementById('mb'), mm = document.getElementById('mm');
-mb.addEventListener('click', () => {
-  mm.classList.toggle('open');
-  mb.querySelector('i').className = mm.classList.contains('open') ? 'bi bi-x' : 'bi bi-list';
-});
-mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  mm.classList.remove('open'); mb.querySelector('i').className = 'bi bi-list';
-}));
+        <div class="sc fade-up d2">
+          <div class="sic si-b"><i class="bi bi-shield-check"></i></div>
+          <h3>Enterprise-Grade Quality</h3>
+          <p>From clean code architecture to rigorous testing, we ensure every application is robust, secure, and
+            infinitely scalable.</p>
+        </div>
 
-// Stats counter
-const sio = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    e.target.querySelectorAll('.stn').forEach(n => {
-      const tgt = parseInt(n.dataset.t) || 0, suf = n.dataset.s || '+';
-      let v = 0; const step = Math.max(1, Math.ceil(tgt / 55));
-      const iv = setInterval(() => {
-        v += step;
-        if (v >= tgt) { n.textContent = tgt + suf; clearInterval(iv); }
-        else n.textContent = v + suf;
-      }, 22);
+        <div class="sc fade-up d3">
+          <div class="sic si-g"><i class="bi bi-chat-dots"></i></div>
+          <h3>Transparent Communication</h3>
+          <p>No confusing tech-jargon. We maintain open, honest channels of communication from project kickoff to
+            post-launch support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="sec" id="process">
+    <div class="c">
+      <div class="pg">
+        <div class="fade-left">
+          <div class="sl">How We Work</div>
+          <h2 class="st">Our Simple 4-Step Process</h2>
+          <p class="sb" style="margin-bottom:2.2rem">A proven workflow that keeps you informed at every stage and
+            delivers outstanding results on time, every time.</p>
+          <a href="#contact" class="btn-p" style="display:inline-flex">Start a Project <i
+              class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="steps fade-right">
+          <div class="step">
+            <div class="sn">1</div>
+            <div>
+              <h4>Discovery & Brief</h4>
+              <p>We study your business, goals, target audience, and competitors to craft a winning strategy tailored to
+                you.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="sn">2</div>
+            <div>
+              <h4>Design & Planning</h4>
+              <p>Our design team creates mockups and content plans, getting your sign-off before any development begins.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="sn">3</div>
+            <div>
+              <h4>Development & Creation</h4>
+              <p>We build your website or create social media content with precision, speed, and rigorous quality
+                control.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="sn">4</div>
+            <div>
+              <h4>Launch & Ongoing Support</h4>
+              <p>We go live, monitor performance, and provide dedicated support to ensure continued growth.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- WHY -->
+  <section class="sec" id="why">
+    <div class="c">
+      <div class="wg">
+        <div class="fade-left">
+          <div class="sl">Why Choose Us</div>
+          <h2 class="st">A Partner You Can<br>Actually Trust</h2>
+          <p class="sb" style="margin-bottom:2rem">We're a small, dedicated team that genuinely cares about your brand's
+            success — every project gets our full attention.</p>
+          <div class="tcard">
+            <span class="qm">"</span>
+            <p class="qt">To engineer flawless digital ecosystems. Our vision is to elevate businesses worldwide by
+              bridging the gap between stunning design and deeply robust architectures.</p>
+            <p class="qa">— The tecHMaster Vision</p>
+          </div>
+        </div>
+        <div class="wi fade-right">
+          <div class="witem">
+            <div class="wic"><i class="bi bi-lightning-charge-fill"></i></div>
+            <div>
+              <h4>Fast Turnaround</h4>
+              <p>We deliver on time, every time. Quick execution without compromising quality.</p>
+            </div>
+          </div>
+          <div class="witem">
+            <div class="wic"><i class="bi bi-shield-fill-check"></i></div>
+            <div>
+              <h4>Trusted & Transparent</h4>
+              <p>Clear communication, honest pricing, and regular updates throughout every project.</p>
+            </div>
+          </div>
+          <div class="witem">
+            <div class="wic"><i class="bi bi-graph-up-arrow"></i></div>
+            <div>
+              <h4>Results Focused</h4>
+              <p>We build for conversions, engagement, and measurable growth — not just looks.</p>
+            </div>
+          </div>
+          <div class="witem">
+            <div class="wic"><i class="bi bi-headset"></i></div>
+            <div>
+              <h4>Dedicated Support</h4>
+              <p>You'll always have someone to talk to — before, during, and after every project.</p>
+            </div>
+          </div>
+          <div class="witem">
+            <div class="wic"><i class="bi bi-geo-alt-fill"></i></div>
+            <div>
+              <h4>Local Expertise</h4>
+              <p>Based in Rajkot — we understand Indian markets, businesses, and audiences firsthand.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="sec bg" id="team">
+    <div class="c">
+      <div class="fade-up" style="text-align:center; max-width:540px; margin:0 auto 3.5rem">
+        <div class="sl" style="justify-content:center">Meet The Team</div>
+        <h2 class="st">The People Behind tecHMaster</h2>
+        <p class="sb" style="margin:0 auto">A passionate team of digital experts committed to delivering results that
+          matter for your business.</p>
+      </div>
+
+      <div class="tg">
+
+        <div class="tmcard fade-up d1">
+          <div class="av-wrap">
+            <div class="av-fb av1">
+              <img src="yash_j.png" alt="Yash Jasoliya"
+                style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+            </div>
+            <div class="av-badge">💻</div> <!-- added back for consistency -->
+          </div>
+          <h3>Yash Jasoliya</h3>
+          <span class="tr">Application Developer</span>
+          <p>Master of clean code. Yash builds ultra-responsive architectures and brings flawless application logic to
+            life, ensuring your product is fast, secure, and scalable.</p>
+          <div class="tsoc">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-github"></i></a>
+            <a href="#"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Harpalsinh Sarvaiya - Full Stack Web Developer -->
+        <div class="tmcard fade-up d2">
+          <div class="av-wrap">
+            <div class="av-fb av2">
+              <img src="harpalsinh.png" alt="Harpalsinh Sarvaiya"
+                style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+            </div>
+            <div class="av-badge">🌐</div>
+          </div>
+          <h3>Harpalsinh Sarvaiya</h3>
+          <span class="tr" style="color:#7c3aed">Full Stack Web Developer</span>
+          <p>Architect behind robust and scalable web platforms. Bridges the gap between stunning frontend aesthetics
+            and deep database logic for seamless full-stack execution.</p>
+          <div class="tsoc">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-github"></i></a>
+            <a href="#"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Yash Sangani - Design Master -->
+        <div class="tmcard fade-up d3">
+          <div class="av-wrap">
+            <div class="av-fb av3">
+              <img src="yash_s.png" alt="Yash Sangani"
+                style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+            </div>
+            <div class="av-badge">🎨</div>
+          </div>
+          <h3>Yash Sangani</h3>
+          <span class="tr" style="color:#d97706">Design Master</span>
+          <p>Creative genius behind every visual element at tecHMaster. Transforms ideas into stunning designs that
+            captivate audiences and elevate brands.</p>
+          <div class="tsoc">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-behance"></i></a>
+            <a href="#"><i class="bi bi-dribbble"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="sec" id="contact">
+    <div class="c">
+      <div class="fade-up" style="text-align:center;max-width:540px;margin:0 auto 3.5rem">
+        <div class="sl" style="justify-content:center">Get In Touch</div>
+        <h2 class="st">Let's Work Together</h2>
+        <p class="sb" style="margin:0 auto">Ready to grow your business online? Tell us about your project and we'll
+          respond within 24 hours.</p>
+      </div>
+      <div class="sg fade-up"
+        style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <a href="mailto:officialtechmaster8@gmail.com" class="sc fade-up d1"
+          style="text-decoration:none; display:flex; flex-direction:column; align-items:center; text-align:center; padding: 3rem 2rem;">
+          <div class="ci-i"
+            style="margin-bottom:1.5rem; width:70px; height:70px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; background:rgba(59,130,246,0.1); color:#3b82f6;">
+            <i class="bi bi-envelope-fill"></i>
+          </div>
+          <h3 style="margin-bottom:0.5rem; color:var(--dark);">Email Us</h3>
+          <p style="margin:0; font-weight:500; color:var(--muted);">officialtechmaster8<br>@gmail.com</p>
+        </a>
+        <a href="https://wa.me/918980272520" class="sc fade-up d2"
+          style="text-decoration:none; display:flex; flex-direction:column; align-items:center; text-align:center; padding: 3rem 2rem;"
+          target="_blank">
+          <div class="ci-i"
+            style="margin-bottom:1.5rem; width:70px; height:70px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; background:rgba(34,197,94,0.1); color:#22c55e;">
+            <i class="bi bi-whatsapp"></i>
+          </div>
+          <h3 style="margin-bottom:0.5rem; color:var(--dark);">WhatsApp</h3>
+          <p style="margin:0; font-weight:500; color:var(--muted);">+91 8980272520</p>
+        </a>
+        <a href="https://instagram.com/our_techmasters" class="sc fade-up d3"
+          style="text-decoration:none; display:flex; flex-direction:column; align-items:center; text-align:center; padding: 3rem 2rem;"
+          target="_blank">
+          <div class="ci-i"
+            style="margin-bottom:1.5rem; width:70px; height:70px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; background:rgba(245,158,11,0.1); color:#f59e0b;">
+            <i class="bi bi-instagram"></i>
+          </div>
+          <h3 style="margin-bottom:0.5rem; color:var(--dark);">Instagram</h3>
+          <p style="margin:0; font-weight:500; color:var(--muted);">@our_techmasters</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="c">
+      <div class="fg2">
+        <div>
+          <a href="#home" class="flogo" style="display: inline-block; margin-bottom: 0.9rem;"><img
+              src="techmaster_dark_logo.png" alt="tecHMaster Studio" style="height: 75px; border-radius: 8px;"></a>
+          <p class="fdesc">A full-stack digital agency crafting websites, mobile applications, and powerful software
+            solutions that drive real global business growth.</p>
+          <div class="fsoc-row">
+            <a href="https://instagram.com/our_techmasters" class="fsoc" target="_blank"><i
+                class="bi bi-instagram"></i></a>
+            <a href="https://wa.me/918980272520" class="fsoc" target="_blank"><i class="bi bi-whatsapp"></i></a>
+            <a href="mailto:officialtechmaster8@gmail.com" class="fsoc"><i class="bi bi-envelope-fill"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#home" class="fl">Home</a>
+          <a href="#team" class="fl">Our Team</a>
+          <a href="#process" class="fl">Process</a>
+          <a href="#contact" class="fl">Contact</a>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="#services" class="fl">Mobile App Development</a>
+          <a href="#services" class="fl">Web Application</a>
+          <a href="#services" class="fl">Web Designing</a>
+          <a href="#services" class="fl">Web Development</a>
+        </div>
+        <div>
+          <h4>Quick Contact</h4>
+          <a href="mailto:officialtechmaster8@gmail.com" class="fl"><i class="bi bi-envelope"
+              style="color:#60a5fa;margin-right:.4rem"></i>officialtechmaster8@gmail.com</a>
+          <a href="https://wa.me/918980272520" class="fl" target="_blank"><i class="bi bi-whatsapp"
+              style="color:#22c55e;margin-right:.4rem"></i>+91 8980272520</a>
+          <a href="https://instagram.com/our_techmasters" class="fl" target="_blank"><i class="bi bi-instagram"
+              style="color:#e879f9;margin-right:.4rem"></i>@our_techmasters</a>
+        </div>
+      </div>
+      <hr class="fhr" />
+      <div class="fbot">
+        <p>© 2025 tecHMaster. All rights reserved.</p>
+        <p>Designed with ♥ by Team tecHMaster</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <script>
+    // Scroll reveal
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el => io.observe(el));
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('up', window.scrollY > 30);
+      document.getElementById('btt').classList.toggle('show', window.scrollY > 500);
+    }, { passive: true });
+
+    // Mobile menu
+    const mb = document.getElementById('mb'), mm = document.getElementById('mm');
+    mb.addEventListener('click', () => {
+      mm.classList.toggle('open');
+      mb.querySelector('i').className = mm.classList.contains('open') ? 'bi bi-x' : 'bi bi-list';
     });
-    sio.unobserve(e.target);
-  });
-}, { threshold: 0.3 });
-const sb2 = document.querySelector('.stats-band');
-if (sb2) sio.observe(sb2);
+    mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mm.classList.remove('open'); mb.querySelector('i').className = 'bi bi-list';
+    }));
 
-// Form
-function submitForm(btn) {
-  btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Message Sent Successfully!';
-  btn.style.background = '#16a34a'; btn.disabled = true;
-  setTimeout(() => {
-    btn.innerHTML = '<i class="bi bi-send-fill"></i> Send Message';
-    btn.style.background = ''; btn.disabled = false;
-  }, 3500);
-}
+    // Stats counter
+    const sio = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.querySelectorAll('.stn').forEach(n => {
+          const tgt = parseInt(n.dataset.t) || 0, suf = n.dataset.s || '+';
+          let v = 0; const step = Math.max(1, Math.ceil(tgt / 55));
+          const iv = setInterval(() => {
+            v += step;
+            if (v >= tgt) { n.textContent = tgt + suf; clearInterval(iv); }
+            else n.textContent = v + suf;
+          }, 22);
+        });
+        sio.unobserve(e.target);
+      });
+    }, { threshold: 0.3 });
+    const sb2 = document.querySelector('.stats-band');
+    if (sb2) sio.observe(sb2);
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-  });
-});
+    // Form
+    function submitForm(btn) {
+      btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Message Sent Successfully!';
+      btn.style.background = '#16a34a'; btn.disabled = true;
+      setTimeout(() => {
+        btn.innerHTML = '<i class="bi bi-send-fill"></i> Send Message';
+        btn.style.background = ''; btn.disabled = false;
+      }, 3500);
+    }
 
-// Hero entrance
-window.addEventListener('load', () => {
-  document.querySelectorAll('.hero .fade-up, .hero .fade-right').forEach((el, i) => {
-    setTimeout(() => el.classList.add('vis'), 80 + i * 110);
-  });
-});
-</script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    // Hero entrance
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero .fade-up, .hero .fade-right').forEach((el, i) => {
+        setTimeout(() => el.classList.add('vis'), 80 + i * 110);
+      });
+    });
+  </script>
 </body>
+
 </html>
